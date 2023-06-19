@@ -34,7 +34,8 @@ public class CottonSpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update() { }
 
-    void SpawnCotton() {
+    void SpawnCotton()
+    {
         // get the max size for the cotton
         xRange = Mathf.Abs(Mathf.RoundToInt(rightWall.transform.position.x));
         yRange = Mathf.Abs(Mathf.RoundToInt(topLeftWall.transform.position.y) - 1);
