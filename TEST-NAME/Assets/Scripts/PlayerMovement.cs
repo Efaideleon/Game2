@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private float horizontal = 0f;
     private float vertical = 0f;
 
-    private Direction latestDirection = Direction.None;
+    public Direction latestDirection = Direction.None;
 
     void Start() { }
 
