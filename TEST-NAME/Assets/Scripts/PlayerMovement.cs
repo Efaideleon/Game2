@@ -1,20 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 1f; // The speed at which the player moves
     public float x;
     public float y;
-    public enum CurrentInput
+    public enum Direction
     {
         Horizontal,
         Vertical,
         None
     }
 
-    public CurrentInput currInput;
+    private float horizontal = 0f;
+    private float vertical = 0f;
+
+    private Direction latestDirection = Direction.None;
 
     void Start() { }
 
@@ -34,38 +38,43 @@ public class PlayerMovement : MonoBehaviour
 
     void MoveOneUnit(float x_, float y_)
     {
-        if (x_ != 0)
+        if (x_ != 0 && horizontal == 0)
         {
-            if (currInput == CurrentInput.Horizontal && y_ != 0) {
-                currInput = CurrentInput.Vertical;
-            }
-            else if(currInput != CurrentInput.Vertical) 
-            {
-                currInput = CurrentInput.Horizontal;
-            }
-        }
-        else if (y_ != 0)
-        {
-            if (currInput == CurrentInput.Vertical && x_ != 0){
-                currInput = CurrentInput.Horizontal;
-            }
-            else if (currInput != CurrentInput.Horizontal)
-            {
-                currInput = CurrentInput.Vertical;
-            }
+            horizontal = x_;
+            latestDirection = Direction.Horizontal;
         }
 
-        if (currInput == CurrentInput.Horizontal)
+        // Update vertical if changed from not pressing to pressing
+        if (y_ != 0 && vertical == 0)
         {
-            MoveHorizontal(x_);
-        }
-        else if (currInput == CurrentInput.Vertical)
-        {
-            MoveVertical(y_);
+            vertical = y_;
+            latestDirection = Direction.Vertical;
         }
 
-        if (x_ == 0 && y_ ==0){
-            currInput = CurrentInput.None;
+        // Reset horizontal if not pressing
+        if (x_ == 0)
+        {
+            horizontal = 0f;
+        }
+
+        // Reset vertical if not pressing
+        if (y_ == 0)
+        {
+            vertical = 0f;
+        }
+
+        // Decide which direction to move based on the latest input
+        if (latestDirection == Direction.Horizontal && horizontal != 0)
+        {
+            MoveHorizontal(horizontal);
+        }
+        else if (vertical != 0)
+        {
+            MoveVertical(vertical);
+        }
+        else if (horizontal != 0)
+        {
+            MoveHorizontal(horizontal);
         }
     }
 
