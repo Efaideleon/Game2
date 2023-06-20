@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private MoveDirection latestDirection = MoveDirection.None;
     private bool upKeyPressed, downKeyPressed, leftKeyPressed, rightKeyPressed;
 
+
     void Start() { }
 
     void Update()
