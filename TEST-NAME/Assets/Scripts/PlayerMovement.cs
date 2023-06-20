@@ -24,10 +24,13 @@ public class PlayerMovement : MonoBehaviour
 
     void MoveOneUnit(float x, float y)
     {
-        if (x != 0 && y != 0)
+        if (x != 0)
         {
-            x = Mathf.Round(x);
             y = 0;
+        }
+        if (y != 0)
+        {
+            x = 0;
         }
         Vector3 move = new Vector3(-x, y, 0);
         Vector3 direction = move * speed * Time.fixedDeltaTime;

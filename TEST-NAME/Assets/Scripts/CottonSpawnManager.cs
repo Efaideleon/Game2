@@ -37,9 +37,9 @@ public class CottonSpawnManager : MonoBehaviour
     void SpawnCotton()
     {
         // get the max size for the cotton
-        xRange = Mathf.Abs(Mathf.RoundToInt(rightWall.transform.position.x));
-        yRange = Mathf.Abs(Mathf.RoundToInt(topLeftWall.transform.position.y) - 1);
-
+        xRange = Mathf.Abs(Mathf.RoundToInt(rightWall.transform.position.x - leftWall.transform.position.x)) - 1;
+        yRange = Mathf.Abs(Mathf.RoundToInt(topLeftWall.transform.position.y - bottomWall.transform.position.y) - 1);
+        Debug.Log("xRange: " + xRange + " yRange: " + yRange);
         // loading the cotton
         for (int i = 0; i < xRange; i++)
         {
@@ -47,7 +47,7 @@ public class CottonSpawnManager : MonoBehaviour
             {
                 Instantiate(
                     cottonPrefab,
-                    new Vector3((leftWall.transform.position.x - 1) - i, 1 + j, 0),
+                    new Vector3(-i, j, 0),
                     cottonPrefab.transform.rotation
                 );
             }
