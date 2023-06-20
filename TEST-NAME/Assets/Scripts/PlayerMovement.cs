@@ -36,29 +36,36 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("Collision!");
     }
 
-    void MoveOneUnit(float x_, float y_)
+    void MoveOneUnit(float newHorizontal, float newVertical)
     {
-        if (x_ != 0 && horizontal == 0)
+        // Update horizontal if changed from not pressing to pressing
+        if ((newHorizontal > 0 && horizontal >= 0) || (newHorizontal < 0 && horizontal <= 0) || horizontal == 0)
         {
-            horizontal = x_;
-            latestDirection = Direction.Horizontal;
+            if (newHorizontal != 0 && horizontal == 0)
+            {
+                latestDirection = Direction.Horizontal;
+            }
+            horizontal = newHorizontal;
         }
 
         // Update vertical if changed from not pressing to pressing
-        if (y_ != 0 && vertical == 0)
+        if ((newVertical > 0 && vertical >= 0) || (newVertical < 0 && vertical <= 0) || vertical == 0)
         {
-            vertical = y_;
-            latestDirection = Direction.Vertical;
+            if (newVertical != 0 && vertical == 0)
+            {
+                latestDirection = Direction.Vertical;
+            }
+            vertical = newVertical;
         }
 
         // Reset horizontal if not pressing
-        if (x_ == 0)
+        if (newHorizontal == 0)
         {
             horizontal = 0f;
         }
 
         // Reset vertical if not pressing
-        if (y_ == 0)
+        if (newVertical == 0)
         {
             vertical = 0f;
         }
