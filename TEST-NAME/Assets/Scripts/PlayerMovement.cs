@@ -28,6 +28,27 @@ public class PlayerMovement : MonoBehaviour
         MoveOneUnit();
     }
 
+    void FixedUpdate()
+    {
+        switch (latestDirection)
+        {
+            case MoveDirection.Up:
+                MoveVertical(1);
+                break;
+            case MoveDirection.Down:
+                MoveVertical(-1);
+                break;
+            case MoveDirection.Left:
+                MoveHorizontal(-1);
+                break;
+            case MoveDirection.Right:
+                MoveHorizontal(1);
+                break;
+            default:
+                break;
+        }
+    }
+
     void OnCollisionEnter(Collision collision)
     {
         collision.gameObject.CompareTag("Cotton");
@@ -85,23 +106,7 @@ public class PlayerMovement : MonoBehaviour
                 ResetLatestDirection();
         }
 
-        switch (latestDirection)
-        {
-            case MoveDirection.Up:
-                MoveVertical(1);
-                break;
-            case MoveDirection.Down:
-                MoveVertical(-1);
-                break;
-            case MoveDirection.Left:
-                MoveHorizontal(-1);
-                break;
-            case MoveDirection.Right:
-                MoveHorizontal(1);
-                break;
-            default:
-                break;
-        }
+        
     }
 
     void ResetLatestDirection()
@@ -120,16 +125,16 @@ public class PlayerMovement : MonoBehaviour
 
     void MoveHorizontal(float x_)
     {
-        int moveX = Mathf.RoundToInt(x_);
-        Vector3 move = new Vector3(-moveX, 0, 0);
-        Move(move);
+        Vector3 newPosition = transform.position + new Vector3(-x_, 0, 0);
+        newPosition.x = Mathf.Round(newPosition.x);
+        transform.position = newPosition;
     }
 
     void MoveVertical(float y_)
     {
-        int moveY = Mathf.RoundToInt(y_);
-        Vector3 move = new Vector3(0, moveY, 0);
-        Move(move);
+        Vector3 newPosition = transform.position + new Vector3(0, y_, 0);
+        newPosition.y = Mathf.Round(newPosition.y);
+        transform.position = newPosition;
     }
 
     void Move(Vector3 move)
