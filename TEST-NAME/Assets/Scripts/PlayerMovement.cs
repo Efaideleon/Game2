@@ -8,25 +8,23 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 1f; // The speed at which the player moves
     public float x;
     public float y;
-    public enum Direction
+    enum MoveDirection
     {
-        Horizontal,
-        Vertical,
-        None
+        None,
+        Up,
+        Down,
+        Left,
+        Right
     }
 
-    private float horizontal = 0f;
-    private float vertical = 0f;
-
-    private Direction latestDirection = Direction.None;
+    private MoveDirection latestDirection = MoveDirection.None;
+    private bool upKeyPressed, downKeyPressed, leftKeyPressed, rightKeyPressed;
 
     void Start() { }
 
-    void FixedUpdate()
+    void Update()
     {
-        x = Input.GetAxisRaw("Horizontal"); // Get the horizontal input axis
-        y = Input.GetAxisRaw("Vertical"); // Get the vertical input axis
-        MoveOneUnit(x, y);
+        MoveOneUnit();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -36,53 +34,87 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("Collision!");
     }
 
-    void MoveOneUnit(float newHorizontal, float newVertical)
+    void MoveOneUnit()
     {
-        // Update horizontal if changed from not pressing to pressing
-        if ((newHorizontal > 0 && horizontal >= 0) || (newHorizontal < 0 && horizontal <= 0) || horizontal == 0)
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            if (newHorizontal != 0 && horizontal == 0)
-            {
-                latestDirection = Direction.Horizontal;
-            }
-            horizontal = newHorizontal;
+            upKeyPressed = true;
+            latestDirection = MoveDirection.Up;
+        }
+        else if (Input.GetKeyUp(KeyCode.UpArrow))
+        {
+            upKeyPressed = false;
+            if (latestDirection == MoveDirection.Up)
+                ResetLatestDirection();
         }
 
-        // Update vertical if changed from not pressing to pressing
-        if ((newVertical > 0 && vertical >= 0) || (newVertical < 0 && vertical <= 0) || vertical == 0)
+        if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            if (newVertical != 0 && vertical == 0)
-            {
-                latestDirection = Direction.Vertical;
-            }
-            vertical = newVertical;
+            downKeyPressed = true;
+            latestDirection = MoveDirection.Down;
+        }
+        else if (Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            downKeyPressed = false;
+            if (latestDirection == MoveDirection.Down)
+                ResetLatestDirection();
         }
 
-        // Reset horizontal if not pressing
-        if (newHorizontal == 0)
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            horizontal = 0f;
+            leftKeyPressed = true;
+            latestDirection = MoveDirection.Left;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftArrow))
+        {
+            leftKeyPressed = false;
+            if (latestDirection == MoveDirection.Left)
+                ResetLatestDirection();
         }
 
-        // Reset vertical if not pressing
-        if (newVertical == 0)
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            vertical = 0f;
+            rightKeyPressed = true;
+            latestDirection = MoveDirection.Right;
+        }
+        else if (Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            rightKeyPressed = false;
+            if (latestDirection == MoveDirection.Right)
+                ResetLatestDirection();
         }
 
-        // Decide which direction to move based on the latest input
-        if (latestDirection == Direction.Horizontal && horizontal != 0)
+        switch (latestDirection)
         {
-            MoveHorizontal(horizontal);
+            case MoveDirection.Up:
+                MoveVertical(1);
+                break;
+            case MoveDirection.Down:
+                MoveVertical(-1);
+                break;
+            case MoveDirection.Left:
+                MoveHorizontal(-1);
+                break;
+            case MoveDirection.Right:
+                MoveHorizontal(1);
+                break;
+            default:
+                break;
         }
-        else if (vertical != 0)
-        {
-            MoveVertical(vertical);
-        }
-        else if (horizontal != 0)
-        {
-            MoveHorizontal(horizontal);
-        }
+    }
+
+    void ResetLatestDirection()
+    {
+        if (upKeyPressed)
+            latestDirection = MoveDirection.Up;
+        else if (downKeyPressed)
+            latestDirection = MoveDirection.Down;
+        else if (leftKeyPressed)
+            latestDirection = MoveDirection.Left;
+        else if (rightKeyPressed)
+            latestDirection = MoveDirection.Right;
+        else
+            latestDirection = MoveDirection.None;
     }
 
     void MoveHorizontal(float x_)
