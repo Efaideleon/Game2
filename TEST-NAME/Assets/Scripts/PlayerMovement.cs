@@ -5,7 +5,7 @@ using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 2f; // The speed at which the player moves
+    public float speed = 1f; // The speed at which the player moves
     public float x;
     public float y;
     enum MoveDirection
