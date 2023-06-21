@@ -20,33 +20,46 @@ public class PlayerMovement : MonoBehaviour
     private MoveDirection latestDirection = MoveDirection.None;
     private bool upKeyPressed, downKeyPressed, leftKeyPressed, rightKeyPressed;
 
+    private Vector3 targetPosition;
 
-    void Start() { }
+    void Start() { 
+        targetPosition = transform.position;
+    }
 
     void Update()
     {
-        MoveOneUnit();
+ 
+            MoveOneUnit();        
+ 
     }
 
     void FixedUpdate()
     {
-        switch (latestDirection)
+        if (transform.position == targetPosition)
         {
-            case MoveDirection.Up:
-                MoveVertical(1);
-                break;
-            case MoveDirection.Down:
-                MoveVertical(-1);
-                break;
-            case MoveDirection.Left:
-                MoveHorizontal(-1);
-                break;
-            case MoveDirection.Right:
-                MoveHorizontal(1);
-                break;
-            default:
-                break;
+            switch (latestDirection)
+            {
+                case MoveDirection.Up:
+                    MoveVertical(1);
+                    break;
+                case MoveDirection.Down:
+                    MoveVertical(-1);
+                    break;
+                case MoveDirection.Left:
+                    MoveHorizontal(-1);
+                    break;
+                case MoveDirection.Right:
+                    MoveHorizontal(1);
+                    break;
+                default:
+                    break;
+            }
         }
+        else { 
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+        }
+
+
     }
 
     void OnCollisionEnter(Collision collision)
@@ -127,19 +140,14 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 newPosition = transform.position + new Vector3(-x_, 0, 0);
         newPosition.x = Mathf.Round(newPosition.x);
-        transform.position = newPosition;
+        targetPosition = newPosition;
     }
 
     void MoveVertical(float y_)
     {
         Vector3 newPosition = transform.position + new Vector3(0, y_, 0);
         newPosition.y = Mathf.Round(newPosition.y);
-        transform.position = newPosition;
+        targetPosition = newPosition;
     }
 
-    void Move(Vector3 move)
-    {
-        Vector3 direction = move * speed * Time.fixedDeltaTime;
-        transform.position += direction; // Move the player
-    }
 }
