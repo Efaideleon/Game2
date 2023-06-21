@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 1f; // The speed at which the player moves
     public float x;
     public float y;
-    
+
     enum MoveDirection
     {
         None,
@@ -24,19 +24,19 @@ public class PlayerMovement : MonoBehaviour
         leftKeyPressed,
         rightKeyPressed;
 
-    private Vector3 targetPosition;
-
-    void Start()
-    {
-        targetPosition = transform.position;
-    }
+    void Start() { }
 
     void Update()
     {
-        MoveOneUnit();
+        GetKeyboardInput();
     }
 
     void FixedUpdate()
+    {
+        MoveToDirection();
+    }
+
+    void MoveToDirection()
     {
         switch (latestDirection)
         {
@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void MoveOneUnit()
+    void GetKeyboardInput()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -126,13 +126,21 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 newPosition = transform.position + new Vector3(-x_, 0, 0);
         newPosition.x = Mathf.Round(newPosition.x);
-        transform.position = Vector3.MoveTowards(transform.position, newPosition, speed * Time.fixedDeltaTime);
+        transform.position = Vector3.MoveTowards(
+            transform.position,
+            newPosition,
+            speed * Time.fixedDeltaTime
+        );
     }
 
     void MoveVertical(float y_)
     {
         Vector3 newPosition = transform.position + new Vector3(0, y_, 0);
         newPosition.y = Mathf.Round(newPosition.y);
-        transform.position = Vector3.MoveTowards(transform.position, newPosition, speed * Time.fixedDeltaTime);
+        transform.position = Vector3.MoveTowards(
+            transform.position,
+            newPosition,
+            speed * Time.fixedDeltaTime
+        );
     }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6499876267429580007}
   - component: {fileID: 7204953443822851079}
   - component: {fileID: 3853917415893012603}
+  - component: {fileID: -3045768922754545425}
   - component: {fileID: 6402615593395868741}
   - component: {fileID: 673378912307115685}
   m_Layer: 0
@@ -33,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7204953443822851079
 MeshFilter:
@@ -85,6 +86,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-3045768922754545425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3113334927322378391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1b65831611384409825e451cc30606c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yarnCubeExplosion: {fileID: 5091275961284384965, guid: e6d0a842b51974db89d505e16dbd5b3b,
+    type: 3}
 --- !u!54 &6402615593395868741
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -8,10 +8,10 @@ public class DestroyYarnCube : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Cotton"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            yarnCubeExplosion.Play();
-            Destroy(collision.gameObject);
+            Instantiate(yarnCubeExplosion, transform.position, yarnCubeExplosion.transform.rotation);
+            Destroy(gameObject);
             Debug.Log("Collision!");
         }
     }
