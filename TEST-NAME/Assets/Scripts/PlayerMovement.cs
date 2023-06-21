@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 1f; // The speed at which the player moves
     public float x;
     public float y;
+    
     enum MoveDirection
     {
         None,
@@ -18,48 +19,42 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private MoveDirection latestDirection = MoveDirection.None;
-    private bool upKeyPressed, downKeyPressed, leftKeyPressed, rightKeyPressed;
+    private bool upKeyPressed,
+        downKeyPressed,
+        leftKeyPressed,
+        rightKeyPressed;
 
     private Vector3 targetPosition;
 
-    void Start() { 
+    void Start()
+    {
         targetPosition = transform.position;
     }
 
     void Update()
     {
- 
-            MoveOneUnit();        
- 
+        MoveOneUnit();
     }
 
     void FixedUpdate()
     {
-        if (transform.position == targetPosition)
+        switch (latestDirection)
         {
-            switch (latestDirection)
-            {
-                case MoveDirection.Up:
-                    MoveVertical(1);
-                    break;
-                case MoveDirection.Down:
-                    MoveVertical(-1);
-                    break;
-                case MoveDirection.Left:
-                    MoveHorizontal(-1);
-                    break;
-                case MoveDirection.Right:
-                    MoveHorizontal(1);
-                    break;
-                default:
-                    break;
-            }
+            case MoveDirection.Up:
+                MoveVertical(1);
+                break;
+            case MoveDirection.Down:
+                MoveVertical(-1);
+                break;
+            case MoveDirection.Left:
+                MoveHorizontal(-1);
+                break;
+            case MoveDirection.Right:
+                MoveHorizontal(1);
+                break;
+            default:
+                break;
         }
-        else { 
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
-        }
-
-
     }
 
     void OnCollisionEnter(Collision collision)
@@ -118,8 +113,6 @@ public class PlayerMovement : MonoBehaviour
             if (latestDirection == MoveDirection.Right)
                 ResetLatestDirection();
         }
-
-        
     }
 
     void ResetLatestDirection()
@@ -140,14 +133,13 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 newPosition = transform.position + new Vector3(-x_, 0, 0);
         newPosition.x = Mathf.Round(newPosition.x);
-        targetPosition = newPosition;
+        transform.position = Vector3.MoveTowards(transform.position, newPosition, speed * Time.fixedDeltaTime);
     }
 
     void MoveVertical(float y_)
     {
         Vector3 newPosition = transform.position + new Vector3(0, y_, 0);
         newPosition.y = Mathf.Round(newPosition.y);
-        targetPosition = newPosition;
+        transform.position = Vector3.MoveTowards(transform.position, newPosition, speed * Time.fixedDeltaTime);
     }
-
 }
