@@ -57,13 +57,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        collision.gameObject.CompareTag("Cotton");
-        Destroy(collision.gameObject);
-        Debug.Log("Collision!");
-    }
-
     void MoveOneUnit()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
