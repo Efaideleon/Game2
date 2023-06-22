@@ -3270,6 +3270,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5329822833626965079, guid: f9d7ec48808e7467ebb150969e0442b6,
+        type: 3}
+      propertyPath: m_RootBone
+      value: 
+      objectReference: {fileID: 881027101}
+    - target: {fileID: 5329822833626965079, guid: f9d7ec48808e7467ebb150969e0442b6,
+        type: 3}
+      propertyPath: m_AABB.m_Center.x
+      value: 0.0009119839
+      objectReference: {fileID: 0}
+    - target: {fileID: 5329822833626965079, guid: f9d7ec48808e7467ebb150969e0442b6,
+        type: 3}
+      propertyPath: m_AABB.m_Center.y
+      value: -0.00027986616
+      objectReference: {fileID: 0}
+    - target: {fileID: 5329822833626965079, guid: f9d7ec48808e7467ebb150969e0442b6,
+        type: 3}
+      propertyPath: m_AABB.m_Center.z
+      value: 0.00031213462
+      objectReference: {fileID: 0}
+    - target: {fileID: 5329822833626965079, guid: f9d7ec48808e7467ebb150969e0442b6,
+        type: 3}
+      propertyPath: m_AABB.m_Extent.x
+      value: 0.005002874
+      objectReference: {fileID: 0}
+    - target: {fileID: 5329822833626965079, guid: f9d7ec48808e7467ebb150969e0442b6,
+        type: 3}
+      propertyPath: m_AABB.m_Extent.y
+      value: 0.010346929
+      objectReference: {fileID: 0}
+    - target: {fileID: 5329822833626965079, guid: f9d7ec48808e7467ebb150969e0442b6,
+        type: 3}
+      propertyPath: m_AABB.m_Extent.z
+      value: 0.01803618
+      objectReference: {fileID: 0}
+    - target: {fileID: 5329822833626965079, guid: f9d7ec48808e7467ebb150969e0442b6,
+        type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5739926314640882920, guid: f9d7ec48808e7467ebb150969e0442b6,
         type: 3}
       propertyPath: m_RootOrder
@@ -4639,6 +4679,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1ee75eace0742f0498379b5fab0540ef,
     type: 3}
   m_PrefabInstance: {fileID: 867084407}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &881027101 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5042459331662127544, guid: f9d7ec48808e7467ebb150969e0442b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 653770699}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &889483199
 PrefabInstance:
