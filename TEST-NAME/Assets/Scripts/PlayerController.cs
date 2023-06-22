@@ -24,7 +24,6 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Debug.Log("not moving");
             playerAnimator.SetBool("moving_b", false);
         }
     }

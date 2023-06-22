@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float x;
     public float y;
     public bool moving = false;
+    public bool isFacingRight = true;
     enum MoveDirection
     {
         None,
@@ -47,9 +48,19 @@ public class PlayerMovement : MonoBehaviour
                 MoveVertical(-1);
                 break;
             case MoveDirection.Left:
+                if (isFacingRight)
+                {
+                    Flip();
+                    isFacingRight = false;
+                }
                 MoveHorizontal(-1);
                 break;
             case MoveDirection.Right:
+                if (!isFacingRight)
+                {
+                    Flip();
+                    isFacingRight = true;
+                }
                 MoveHorizontal(1);
                 break;
             default:
@@ -145,5 +156,9 @@ public class PlayerMovement : MonoBehaviour
             speed * Time.fixedDeltaTime
         );
         moving = true;
+    }
+
+    void Flip() {
+        transform.Rotate(0f, 180f, 0f);
     }
 }
