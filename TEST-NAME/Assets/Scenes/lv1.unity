@@ -3330,6 +3330,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8126602983041182702, guid: f9d7ec48808e7467ebb150969e0442b6,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.3035774
+      objectReference: {fileID: 0}
+    - target: {fileID: 8126602983041182702, guid: f9d7ec48808e7467ebb150969e0442b6,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 1.2958151
+      objectReference: {fileID: 0}
+    - target: {fileID: 8126602983041182702, guid: f9d7ec48808e7467ebb150969e0442b6,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -1.0262545e-17
+      objectReference: {fileID: 0}
+    - target: {fileID: 8126602983041182702, guid: f9d7ec48808e7467ebb150969e0442b6,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.22219276
+      objectReference: {fileID: 0}
+    - target: {fileID: 8126602983041182702, guid: f9d7ec48808e7467ebb150969e0442b6,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.03052783
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9530,7 +9555,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fcae0ed1ef46a402888aa8312a18feba, type: 2}
+  - {fileID: 2100000, guid: 9a6fd3ba7972d46ccb1777d2980ade51, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
