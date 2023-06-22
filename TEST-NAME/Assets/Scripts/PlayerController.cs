@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerAudio = GetComponent<AudioSource>();
-        playerAnimator = GetComponent<Animator>();
+        playerAnimator = GetComponentInChildren<Animator>();
     }
     
     void OnCollisionEnter(Collision collision)
@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
         {
             playerAnimator.SetBool("Is_cutting_b", true);
             playerAudio.PlayOneShot(cutSound, 1.0f);
+        }
+        else {
+            playerAnimator.SetBool("Is_cutting_b", false);
         }
     }
 }
