@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float y;
     public bool moving = false;
     public bool isFacingRight = true;
+    private Animator playerAnimator;
     enum MoveDirection
     {
         None,
@@ -25,7 +26,10 @@ public class PlayerMovement : MonoBehaviour
         leftKeyPressed,
         rightKeyPressed;
 
-    void Start() { }
+    void Start() 
+    { 
+        playerAnimator = GetComponent<Animator>();  
+    }
 
     void Update()
     {
@@ -51,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
                 if (isFacingRight)
                 {
                     Flip();
+                    playerAnimator.SetTrigger("turning_left_t");
                     isFacingRight = false;
                 }
                 MoveHorizontal(-1);
@@ -59,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
                 if (!isFacingRight)
                 {
                     Flip();
+                    playerAnimator.SetTrigger("turning_right_t");
                     isFacingRight = true;
                 }
                 MoveHorizontal(1);

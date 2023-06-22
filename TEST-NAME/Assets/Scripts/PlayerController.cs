@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerAudio = GetComponent<AudioSource>();
-        playerAnimator = GetComponentInChildren<Animator>();
+        playerAnimator = GetComponent<Animator>();
         playerMovementScript = GetComponent<PlayerMovement>();
     }
     
