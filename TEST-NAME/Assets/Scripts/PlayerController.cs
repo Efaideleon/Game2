@@ -6,22 +6,34 @@ public class PlayerController : MonoBehaviour
 {
     private Animator playerAnimator;
     [SerializeField] AudioClip cutSound;
+    public bool isCutting = false;
     AudioSource playerAudio;
+    PlayerMovement playerMovementScript;
     void Start()
     {
         playerAudio = GetComponent<AudioSource>();
         playerAnimator = GetComponentInChildren<Animator>();
+        playerMovementScript = GetComponent<PlayerMovement>();
     }
     
+    void Update()
+    {
+        if (playerMovementScript.moving)
+        {
+            playerAnimator.SetBool("moving_b", true);
+        }
+        else
+        {
+            Debug.Log("not moving");
+            playerAnimator.SetBool("moving_b", false);
+        }
+    }
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Cotton"))
         {
-            playerAnimator.SetBool("Is_cutting_b", true);
             playerAudio.PlayOneShot(cutSound, 1.0f);
-        }
-        else {
-            playerAnimator.SetBool("Is_cutting_b", false);
+            playerAnimator.SetTrigger("cutting_t");
         }
     }
 }

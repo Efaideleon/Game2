@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 1f; // The speed at which the player moves
     public float x;
     public float y;
-
+    public bool moving = false;
     enum MoveDirection
     {
         None,
@@ -53,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
                 MoveHorizontal(1);
                 break;
             default:
+                moving = false;
                 break;
         }
     }
@@ -131,6 +132,7 @@ public class PlayerMovement : MonoBehaviour
             newPosition,
             speed * Time.fixedDeltaTime
         );
+        moving = true;
     }
 
     void MoveVertical(float y_)
@@ -142,5 +144,6 @@ public class PlayerMovement : MonoBehaviour
             newPosition,
             speed * Time.fixedDeltaTime
         );
+        moving = true;
     }
 }
