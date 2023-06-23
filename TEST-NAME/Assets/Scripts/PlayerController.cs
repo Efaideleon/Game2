@@ -18,14 +18,6 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
-        if (playerMovementScript.moving)
-        {
-            playerAnimator.SetBool("moving_b", true);
-        }
-        else
-        {
-            playerAnimator.SetBool("moving_b", false);
-        }
     }
     void OnCollisionEnter(Collision collision)
     {
