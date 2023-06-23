@@ -9,6 +9,7 @@ public class RotateWheel : MonoBehaviour
     // Update is called once per frame
     void Start()
     {
+        // Get the PlayerMovement script from the Player object
         playerMovementScript = GameObject.Find("Player").GetComponent<PlayerMovement>();
     }
     
