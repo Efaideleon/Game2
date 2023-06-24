@@ -202,6 +202,59 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 23090517}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &30705322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 30705324}
+  - component: {fileID: 30705323}
+  m_Layer: 0
+  m_Name: Objects Spawn Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &30705323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30705322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf3746dca843c40fe8326a318d288775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  batteryPrefab: {fileID: 4992952425377201374, guid: bd846662475014f9cb6fabbb69872d63,
+    type: 3}
+  needleEnemyPrefab: {fileID: 8874002911072001451, guid: a259c10e54df04e75aac93e7559c0a63,
+    type: 3}
+  buttonPrefab: {fileID: 7489330292187818310, guid: d2a2ef2a31aee4cd0b551dba25d8e7ae,
+    type: 3}
+  rubberBallPrefab: {fileID: 6559574409534031789, guid: 4143933da4eaa4926aae35df05f6cc13,
+    type: 3}
+  numOfRubberBallsToSpawn: 3
+--- !u!4 &30705324
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30705322}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -18.08226, y: 19.228403, z: 3.5392566}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &36097674
 PrefabInstance:
   m_ObjectHideFlags: 0
