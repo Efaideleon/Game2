@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class ObjectsSpawnManager : MonoBehaviour
 {
-    [SerializeField]
-    GameObject batteryPrefab;
+    [SerializeField] GameObject batteryPrefab;
 
-    [SerializeField]
-    GameObject needleEnemyPrefab;
+    [SerializeField] GameObject needleEnemyPrefab;
 
-    [SerializeField]
-    GameObject buttonPrefab;
+    [SerializeField] GameObject buttonPrefab;
 
-    [SerializeField]
-    GameObject rubberBallPrefab;
+    [SerializeField] GameObject rubberBallPrefab;
 
     int leftLimit;
     int rightLimit;
@@ -32,13 +28,12 @@ public class ObjectsSpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cottonSpawnManagerScript = GameObject
-            .Find("CottonSpawnManager")
-            .GetComponent<CottonSpawnManager>();
+        cottonSpawnManagerScript = GameObject.Find("CottonSpawnManager").GetComponent<CottonSpawnManager>();
         leftLimit = Mathf.RoundToInt(cottonSpawnManagerScript.leftWall.transform.position.x) - offset;
         rightLimit = Mathf.RoundToInt(cottonSpawnManagerScript.rightWall.transform.position.x) + offset;
         topLimit = Mathf.RoundToInt(cottonSpawnManagerScript.topLeftWall.transform.position.y) - offset;
         bottomLimit = Mathf.RoundToInt(cottonSpawnManagerScript.bottomWall.transform.position.y) + offset;
+        
         SpawnRubberBalls();
         SpawnBatteries();
         SpawnButtons();
@@ -90,7 +85,7 @@ public class ObjectsSpawnManager : MonoBehaviour
         {
             SpawnAButton();
         }
-    }   
+    }
 
     public void SpawnRubberBalls()
     {
@@ -106,12 +101,10 @@ public class ObjectsSpawnManager : MonoBehaviour
     {
         float randomX = GetRandomX();
         float randomY = GetRandomY();
-        float ballRadius = 2*rubberBallPrefab.GetComponent<SphereCollider>().radius;
-
+        float ballRadius = 2 * rubberBallPrefab.GetComponent<SphereCollider>().radius;
         randomY += ballRadius + 2.5f;
-        randomX += ballRadius + 2.5f; 
+        randomX += ballRadius + 2.5f;
         GameObject rubberBallInstance = Instantiate(
-
             rubberBallPrefab,
             new Vector3(randomX, randomY, 0),
             rubberBallPrefab.transform.rotation
@@ -133,5 +126,5 @@ public class ObjectsSpawnManager : MonoBehaviour
     private float GetRandomY()
     {
         return Random.Range(bottomLimit, topLimit);
-    }   
+    }
 }

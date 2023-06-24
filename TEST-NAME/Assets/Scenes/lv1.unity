@@ -240,6 +240,9 @@ MonoBehaviour:
   rubberBallPrefab: {fileID: 6559574409534031789, guid: 4143933da4eaa4926aae35df05f6cc13,
     type: 3}
   numOfRubberBallsToSpawn: 3
+  numOfNeedleEnemiesToSpawn: 3
+  numOfBatteriesToSpawn: 3
+  numOfButtonsToSpawn: 3
 --- !u!4 &30705324
 Transform:
   m_ObjectHideFlags: 0
