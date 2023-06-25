@@ -22,7 +22,9 @@ public class Battery : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             gameObject.SetActive(false);
-            particleSpawner.GetParticle();
+            ParticleSystem particle = particleSpawner.GetParticle();
+            particle.transform.position = transform.position;
+            particle.Play();
         }
     }
 }

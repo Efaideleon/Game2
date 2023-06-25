@@ -6,50 +6,40 @@ using UnityEngine.Pool;
 public class ParticleSpawner : MonoBehaviour
 {
     [SerializeField] private ParticleSystem particlePrefab;
-    private int initPoolSize = 100;
+    private int poolSize = 100;
     private int maxPoolSize = 200;
-    public ObjectPool<ParticleSystem> pool;
-
-    private void Awake()
+    public Queue<ParticleSystem> pool;
+private void Awake()
     {
+        pool = new Queue<ParticleSystem>(poolSize);
 
-        pool = new ObjectPool<ParticleSystem>(
-                    // Action when creating new instance
-                    () => Instantiate(particlePrefab),
-                    // Action when enabling an instance
-                    particle => { particle.gameObject.SetActive(true); particle.Play(true); },
-                    // Action when disabling an instance
-                    particle => { particle.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear); particle.gameObject.SetActive(false); },
-                    // Action when destroying an instance
-                    particle => { Destroy(particle.gameObject); },
-                    // Should the pool's action be run in the Unity runtime context
-                    true,
-                    // Initial pool size
-                    100,
-                    // Should the pool automatically expand
-                    200        
-        );
-        // pool = new ObjectPool<ParticleSystem>(
-        //     () => Instantiate(particlePrefab),
-        //     particle => { particle.gameObject.SetActive(true); },
-        //     particle => { particle.gameObject.SetActive(false); },
-        //     particle => { Destroy(particle.gameObject); },
-        //     true,
-        //     initPoolSize,
-        //     maxPoolSize
-        // );
-
-        Instantiate(particlePrefab, transform);
-        Debug.Log("ParticleSpawner Awake");
+        // Initialize the pool
+        for (int i = 0; i < poolSize; i++)
+        {
+            ParticleSystem particle = Instantiate(particlePrefab, this.transform);
+            particle.gameObject.SetActive(false);
+            pool.Enqueue(particle);
+        }
     }
 
     public ParticleSystem GetParticle()
     {
-        return pool.Get();
+        if (pool.Count > 0)
+        {
+            ParticleSystem particle = pool.Dequeue();
+            particle.gameObject.SetActive(true);
+            return particle;
+        }
+        else
+        {
+            // Pool is empty. Handle this, for example by returning null or creating a new particle.
+            return null;
+        }
     }
 
     public void ReturnParticle(ParticleSystem particle)
     {
-        pool.Release(particle);
+        particle.gameObject.SetActive(false);
+        pool.Enqueue(particle);
     }
 }

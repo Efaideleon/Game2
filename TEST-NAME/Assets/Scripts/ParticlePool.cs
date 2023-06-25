@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Pool;
 public class ParticlePool : MonoBehaviour
 {
-    private ObjectPool<ParticleSystem> _pool;
+    private Queue<ParticleSystem> _pool;
     private ParticleSystem _particleSystem;
     // Start is called before the first frame update
     void Start()
@@ -18,6 +18,7 @@ public class ParticlePool : MonoBehaviour
 
     private void OnParticleSystemStopped() 
     {
-        _pool.Release(_particleSystem);
+        _particleSystem.gameObject.SetActive(false);
+        _pool.Enqueue(_particleSystem);
     }
 }
