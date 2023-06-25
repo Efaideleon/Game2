@@ -12,7 +12,6 @@ public class DestroyYarnCube : MonoBehaviour
         {
             Instantiate(yarnCubeExplosion, transform.position, yarnCubeExplosion.transform.rotation);
             Destroy(gameObject);
-            Debug.Log("Collision!");
         }
     }
 }

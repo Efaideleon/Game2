@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Cotton
   - RubberBall
+  - Battery
+  - ClothButton
+  - NeedleEnemy
+  - BatteryParticleSpawner
   layers:
   - Default
   - TransparentFX
