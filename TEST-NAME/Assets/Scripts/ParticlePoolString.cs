@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Pool;
-public class ParticlePool : MonoBehaviour
+
+public class ParticlePoolString : MonoBehaviour
 {
     private ParticleSpawner particleSpawner;
     private Queue<ParticleSystem> _pool;
@@ -10,8 +10,8 @@ public class ParticlePool : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        particleSpawner = GameObject.FindWithTag("BatteryParticleSpawner").GetComponent<ParticleSpawner>();
         _particleSystem = GetComponent<ParticleSystem>();
+        particleSpawner = GameObject.FindWithTag("CottonParticleSpawner").GetComponent<ParticleSpawner>();
         _pool = particleSpawner.pool;
 
         ParticleSystem.MainModule main = _particleSystem.main;

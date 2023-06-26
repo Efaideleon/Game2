@@ -5,11 +5,12 @@ using UnityEngine;
 public class Battery : MonoBehaviour
 {
     private ParticleSpawner particleSpawner;
+    
     // Start is called before the first frame update
     void Start()
     {
         //may need to fix
-        particleSpawner = FindObjectOfType<ParticleSpawner>();
+        particleSpawner = GameObject.FindGameObjectWithTag("BatteryParticleSpawner").GetComponent<ParticleSpawner>();
     }
 
     // Update is called once per frame

@@ -6,8 +6,8 @@ using UnityEngine.Pool;
 public class ParticleSpawner : MonoBehaviour
 {
     [SerializeField] private ParticleSystem particlePrefab;
-    private int poolSize = 100;
-    private int maxPoolSize = 200;
+    [SerializeField] int poolSize;
+    [SerializeField] int maxPoolSize;
     public Queue<ParticleSystem> pool;
 private void Awake()
     {

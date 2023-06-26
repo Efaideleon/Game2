@@ -38,7 +38,8 @@ public class CottonSpawnManager : MonoBehaviour
         {
             for (int j = 0; j < yRange; j++)
             {
-                Instantiate(cottonPrefab, new Vector3(-i, j, 0), cottonPrefab.transform.rotation);
+                GameObject cottonInstance = Instantiate(cottonPrefab, new Vector3(-i, j, 0), cottonPrefab.transform.rotation);
+                cottonInstance.transform.parent = transform;
             }
         }
     }

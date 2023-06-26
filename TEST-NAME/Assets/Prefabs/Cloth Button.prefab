@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8594566261840204475}
   - component: {fileID: 6697423945478091884}
   - component: {fileID: -3679146664095011527}
+  - component: {fileID: -3026004852845978396}
   - component: {fileID: 4526695755322333069}
   m_Layer: 0
   m_Name: Cloth Button
@@ -120,6 +121,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49145c48d72a8429ab52a47b7d069d86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3026004852845978396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7489330292187818310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53f15116a2ff14497875f3e435e7b112, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &4526695755322333069
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -145,7 +158,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 14
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1001 &5934085536783383893
 PrefabInstance:
