@@ -233,8 +233,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   batteryPrefab: {fileID: 4992952425377201374, guid: bd846662475014f9cb6fabbb69872d63,
     type: 3}
-  needleEnemyPrefab: {fileID: 8874002911072001451, guid: a259c10e54df04e75aac93e7559c0a63,
-    type: 3}
   buttonPrefab: {fileID: 7489330292187818310, guid: d2a2ef2a31aee4cd0b551dba25d8e7ae,
     type: 3}
   rubberBallPrefab: {fileID: 6559574409534031789, guid: 4143933da4eaa4926aae35df05f6cc13,
@@ -10697,6 +10695,85 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2120880808}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1233780932507270025
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -7555356942552179112, guid: fe7c0c0be8f00412fa0359e047ec3386,
+        type: 3}
+      propertyPath: needleEnemyPrefab
+      value: 
+      objectReference: {fileID: 8874002911072001451, guid: a259c10e54df04e75aac93e7559c0a63,
+        type: 3}
+    - target: {fileID: 7849223986445460621, guid: fe7c0c0be8f00412fa0359e047ec3386,
+        type: 3}
+      propertyPath: m_Name
+      value: Spawn Enemies Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066063743136196366, guid: fe7c0c0be8f00412fa0359e047ec3386,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066063743136196366, guid: fe7c0c0be8f00412fa0359e047ec3386,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -17.579626
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066063743136196366, guid: fe7c0c0be8f00412fa0359e047ec3386,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 13.313272
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066063743136196366, guid: fe7c0c0be8f00412fa0359e047ec3386,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.9387236
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066063743136196366, guid: fe7c0c0be8f00412fa0359e047ec3386,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066063743136196366, guid: fe7c0c0be8f00412fa0359e047ec3386,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066063743136196366, guid: fe7c0c0be8f00412fa0359e047ec3386,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066063743136196366, guid: fe7c0c0be8f00412fa0359e047ec3386,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066063743136196366, guid: fe7c0c0be8f00412fa0359e047ec3386,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066063743136196366, guid: fe7c0c0be8f00412fa0359e047ec3386,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066063743136196366, guid: fe7c0c0be8f00412fa0359e047ec3386,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fe7c0c0be8f00412fa0359e047ec3386, type: 3}
 --- !u!1001 &4592740654370174888
 PrefabInstance:
   m_ObjectHideFlags: 0

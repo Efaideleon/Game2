@@ -6,8 +6,6 @@ public class ObjectsSpawnManager : MonoBehaviour
 {
     [SerializeField] GameObject batteryPrefab;
 
-    [SerializeField] GameObject needleEnemyPrefab;
-
     [SerializeField] GameObject buttonPrefab;
 
     [SerializeField] GameObject rubberBallPrefab;
@@ -37,7 +35,6 @@ public class ObjectsSpawnManager : MonoBehaviour
         SpawnRubberBalls();
         SpawnBatteries();
         SpawnButtons();
-        SpawnNeedleEnemies();
     }
 
     // Update is called once per frame
@@ -53,24 +50,6 @@ public class ObjectsSpawnManager : MonoBehaviour
         for (int i = 0; i < numOfBatteriesToSpawn; i++)
         {
             SpawnABattery();
-        }
-    }
-
-
-    public void SpawnNeedleEnemy()
-    {
-        Instantiate(
-            needleEnemyPrefab,
-            new Vector3(GetRandomX(), GetRandomY(), 0),
-            needleEnemyPrefab.transform.rotation
-        );
-    }
-
-    public void SpawnNeedleEnemies()
-    {
-        for (int i = 0; i < numOfNeedleEnemiesToSpawn; i++)
-        {
-            SpawnNeedleEnemy();
         }
     }
 
