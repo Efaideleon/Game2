@@ -313,8 +313,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7260232686887371517}
   - component: {fileID: -3532469001430216638}
+  - component: {fileID: -7934146601343097254}
   - component: {fileID: -204849501764572059}
   - component: {fileID: -2146718062959114515}
+  - component: {fileID: -242406438579346587}
   m_Layer: 0
   m_Name: Needle Enemy
   m_TagString: NeedleEnemy
@@ -352,6 +354,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca980d30385ad4187b5280fdc759ece1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7934146601343097254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8874002911072001451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b622a9feb3fee42458c8b1a8e75ec9a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
 --- !u!65 &-204849501764572059
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -398,5 +413,26 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 14
+  m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!95 &-242406438579346587
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8874002911072001451}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7afaf1230991a42ecb74c1088d7f8725, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

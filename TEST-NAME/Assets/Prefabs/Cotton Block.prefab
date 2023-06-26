@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   yarnCubeExplosion: {fileID: 5091275961284384965, guid: e6d0a842b51974db89d505e16dbd5b3b,
     type: 3}
-  particleSpawner: {fileID: 8708439581607787217, guid: 64e7a851ec7a641f099db13419544a8d,
+  particleSpawner: {fileID: 6384077127206935519, guid: 64e7a851ec7a641f099db13419544a8d,
     type: 3}
 --- !u!54 &6402615593395868741
 Rigidbody:

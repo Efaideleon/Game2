@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ObjectsSpawnManager : MonoBehaviour
 {
-    [SerializeField] GameObject batteryPrefab;
+    [SerializeField] GameObject batteriesObject;
 
-    [SerializeField] GameObject buttonPrefab;
+    [SerializeField] GameObject clothButtonsObject;
 
     [SerializeField] GameObject rubberBallPrefab;
 
@@ -40,29 +40,23 @@ public class ObjectsSpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update() { }
 
-    public void SpawnABattery()
-    {
-        Instantiate(batteryPrefab, new Vector3(GetRandomX(), GetRandomY(), 0), batteryPrefab.transform.rotation);
-    }
-
     public void SpawnBatteries()
     {
         for (int i = 0; i < numOfBatteriesToSpawn; i++)
         {
-            SpawnABattery();
+            GameObject batteryObject = batteriesObject.transform.GetChild(i).gameObject; 
+            batteryObject.SetActive(true);
+            batteryObject.transform.position = new Vector3(GetRandomX(), GetRandomY(), 0);
         }
-    }
-
-    public void SpawnAButton()
-    {
-        Instantiate(buttonPrefab, new Vector3(GetRandomX(), GetRandomY(), 0), buttonPrefab.transform.rotation);
     }
 
     public void SpawnButtons()
     {
         for (int i = 0; i < numOfButtonsToSpawn; i++)
         {
-            SpawnAButton();
+            GameObject buttonObject = clothButtonsObject.transform.GetChild(i).gameObject;
+            buttonObject.SetActive(true);
+            buttonObject.transform.position = new Vector3(GetRandomX(), GetRandomY(), 0);
         }
     }
 

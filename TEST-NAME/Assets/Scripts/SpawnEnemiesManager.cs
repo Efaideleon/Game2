@@ -8,6 +8,7 @@ public class SpawnEnemiesManager : MonoBehaviour
     private int numOfNeedleEnemiesToSpawn = 1;
     private int needleEnemyStartX = -35;
     private int needleEnemyStartY = 24;
+
     // Start is called before the first frame update
     void Start()
     {
