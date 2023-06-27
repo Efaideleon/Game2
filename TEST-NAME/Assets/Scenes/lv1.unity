@@ -9100,25 +9100,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Battery
       objectReference: {fileID: 0}
-    - target: {fileID: 4992952425377201374, guid: bd846662475014f9cb6fabbb69872d63,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5416889669358515002, guid: bd846662475014f9cb6fabbb69872d63,
         type: 3}
       propertyPath: m_RootOrder
       value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5416889669358515002, guid: bd846662475014f9cb6fabbb69872d63,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 5416889669358515002, guid: bd846662475014f9cb6fabbb69872d63,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 5416889669358515002, guid: bd846662475014f9cb6fabbb69872d63,
         type: 3}

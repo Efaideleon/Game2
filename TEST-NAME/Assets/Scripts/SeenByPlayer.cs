@@ -28,6 +28,7 @@ public class SeenByPlayer : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.5f);
             seenByPayer = true;
+            gameObject.GetComponent<MeshRenderer>().enabled = true;
         }
     }
 

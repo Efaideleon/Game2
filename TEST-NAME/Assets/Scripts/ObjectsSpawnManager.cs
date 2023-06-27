@@ -46,6 +46,7 @@ public class ObjectsSpawnManager : MonoBehaviour
         {
             GameObject batteryObject = batteriesObject.transform.GetChild(i).gameObject; 
             batteryObject.SetActive(true);
+            batteryObject.GetComponent<MeshRenderer>().enabled = false;
             batteryObject.transform.position = new Vector3(GetRandomX(), GetRandomY(), 0);
         }
     }
