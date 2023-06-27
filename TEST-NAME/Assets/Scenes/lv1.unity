@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1736897, g: 0.2171517, b: 0.2992773, a: 1}
+  m_IndirectSpecularColor: {r: 0.17368932, g: 0.217151, b: 0.299276, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1524,8 +1524,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.010000049, y: 0.020000052, z: 0.38000008}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.010504135, y: 0.020378107, z: 0.38000008}
+  m_Center: {x: -0.000042006075, y: -0.000021003485, z: 3.2097552e-19}
 --- !u!1 &1579174273
 GameObject:
   m_ObjectHideFlags: 0
@@ -2251,8 +2251,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0100000175, y: 0.019999998, z: 0.38000008}
-  m_Center: {x: 0.000000029802322, y: 0, z: 0.000000029802322}
+  m_Size: {x: 0.010814932, y: 0.021018818, z: 0.38000008}
+  m_Center: {x: -0.00010179579, y: 5.960487e-10, z: 0.00000002889003}
 --- !u!1 &1830150341
 GameObject:
   m_ObjectHideFlags: 0
@@ -2514,8 +2514,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.010000027, y: 0.02000003, z: 0.38000008}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.011780188, y: 0.021608131, z: 0.38000008}
+  m_Center: {x: 0.00017536296, y: 0.00026801944, z: 8.78627e-11}
 --- !u!1 &1892460907
 GameObject:
   m_ObjectHideFlags: 0
@@ -2964,8 +2964,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.010000022, y: 0.020000024, z: 0.38000008}
-  m_Center: {x: -0.000000014901161, y: 0, z: -0.000000014901161}
+  m_Size: {x: 0.011359075, y: 0.02104542, z: 0.38000008}
+  m_Center: {x: 0.00005227219, y: -0.0000000017881394, z: -0.000000013064917}
 --- !u!4 &543450653591628108 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3081823991682784259, guid: 3df0ec090d23c419d843e752c613761b,
@@ -3018,8 +3018,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0100000175, y: 0.019999998, z: 0.38000008}
-  m_Center: {x: 0, y: 0, z: 0.000000029802322}
+  m_Size: {x: 0.010615609, y: 0.020555805, z: 0.38000008}
+  m_Center: {x: 0.00006146311, y: 0.000030612948, z: 0.000000028899244}
 --- !u!1001 &1233780932507270025
 PrefabInstance:
   m_ObjectHideFlags: 0
