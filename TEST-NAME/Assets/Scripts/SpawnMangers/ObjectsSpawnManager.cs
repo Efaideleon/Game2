@@ -42,10 +42,12 @@ public class ObjectsSpawnManager : MonoBehaviour
 
     public void SpawnBatteries()
     {
+        Debug.Log("Spawning batteries");
         for (int i = 0; i < numOfBatteriesToSpawn; i++)
         {
             GameObject batteryObject = batteriesObject.transform.GetChild(i).gameObject; 
             batteryObject.SetActive(true);
+            Debug.Log("Battery:" + i);
             batteryObject.GetComponent<MeshRenderer>().enabled = false;
             batteryObject.transform.position = new Vector3(GetRandomX(), GetRandomY(), 0);
         }
@@ -53,6 +55,7 @@ public class ObjectsSpawnManager : MonoBehaviour
 
     public void SpawnButtons()
     {
+        Debug.Log("Spawning buttons");
         for (int i = 0; i < numOfButtonsToSpawn; i++)
         {
             GameObject buttonObject = clothButtonsObject.transform.GetChild(i).gameObject;

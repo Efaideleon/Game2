@@ -23,6 +23,7 @@ public class Collectible : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             gameManager.UpdateScore(ScoreValue);
+            Debug.Log("deactivating Battery");
             gameObject.SetActive(false);
         }
     }
