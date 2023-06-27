@@ -57,6 +57,7 @@ public class ObjectsSpawnManager : MonoBehaviour
         {
             GameObject buttonObject = clothButtonsObject.transform.GetChild(i).gameObject;
             buttonObject.SetActive(true);
+            buttonObject.GetComponent<MeshRenderer>().enabled = false;
             buttonObject.transform.position = new Vector3(GetRandomX(), GetRandomY(), 0);
         }
     }
@@ -93,7 +94,7 @@ public class ObjectsSpawnManager : MonoBehaviour
         }
     }
 
-   private float GetRandomX()
+    private float GetRandomX()
     {
         return Random.Range(leftLimit, rightLimit);
     }

@@ -18,11 +18,11 @@ public class SeenByPlayer : MonoBehaviour
     {
         if (!seenByPayer)
         {
-            SetBatteryOnTopOfCotton();
+            SetObjectOnTopOfCotton();
         }
     }
 
-    void SetBatteryOnTopOfCotton()
+    void SetObjectOnTopOfCotton()
     {
         if (GetDistanceToPlayer() < 5.0f)
         {
