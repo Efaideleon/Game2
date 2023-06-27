@@ -11,7 +11,6 @@ public class Battery : MonoBehaviour
     {
         //may need to fix
         particleSpawner = GameObject.FindGameObjectWithTag("BatteryParticleSpawner").GetComponent<ParticleSpawner>();
-        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
