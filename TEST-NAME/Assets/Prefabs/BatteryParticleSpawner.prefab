@@ -46,3 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particlePrefab: {fileID: 3059501060405551997, guid: 8a83a0679faa24deba2d2be631b07e85,
     type: 3}
+  poolSize: 0
+  maxPoolSize: 0

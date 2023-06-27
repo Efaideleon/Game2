@@ -27,4 +27,6 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetTrigger("cutting_t");
         }
     }
+
+
 }

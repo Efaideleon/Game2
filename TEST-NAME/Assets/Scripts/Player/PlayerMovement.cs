@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public bool moving = false;
     public bool isFacingRight = true;
     private Animator playerAnimator;
+    [SerializeField] GameManager gameManager;
     enum MoveDirection
     {
         None,
@@ -33,12 +34,14 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        GetKeyboardInput();
+        if(gameManager.IsGameActive())        
+            GetKeyboardInput();
     }
 
     void FixedUpdate()
     {
-        MoveToDirection();
+        if (gameManager.IsGameActive())
+            MoveToDirection();
     }
 
     void MoveToDirection()

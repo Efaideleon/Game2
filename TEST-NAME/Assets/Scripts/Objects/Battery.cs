@@ -5,13 +5,12 @@ using UnityEngine;
 public class Battery : MonoBehaviour
 {
     private ParticleSpawner particleSpawner;
-    private GameManager gameManager; 
     // Start is called before the first frame update
+    
     void Start()
     {
         //may need to fix
         particleSpawner = GameObject.FindGameObjectWithTag("BatteryParticleSpawner").GetComponent<ParticleSpawner>();
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         gameObject.SetActive(false);
     }
 
@@ -24,8 +23,6 @@ public class Battery : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            gameManager.UpdateScore(5);
-            gameObject.SetActive(false);
             ParticleSystem particle = particleSpawner.GetParticle();
             particle.transform.position = transform.position;
             particle.Play();
