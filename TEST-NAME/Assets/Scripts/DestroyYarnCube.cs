@@ -5,7 +5,7 @@ using UnityEngine;
 public class DestroyYarnCube : MonoBehaviour
 {
     [SerializeField] ParticleSystem yarnCubeExplosion;
-    [SerializeField] ParticleSpawner particleSpawner;
+    private ParticleSpawner particleSpawner;
 
     void Start()
     {
