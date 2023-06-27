@@ -12,7 +12,6 @@ public class ClothButton : MonoBehaviour
     {
         collectibleScript = GetComponent<Collectible>();
         gameManager = collectibleScript.GetGameManager();
-        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
