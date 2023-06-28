@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isFacingRight = true;
     private Animator playerAnimator;
     [SerializeField] GameManager gameManager;
+    private Rigidbody rb;
     enum MoveDirection
     {
         None,
@@ -30,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     void Start() 
     { 
         playerAnimator = GetComponent<Animator>();  
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -147,11 +149,12 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 newPosition = transform.position + new Vector3(-x_, 0, 0);
         newPosition.x = Mathf.Round(newPosition.x);
-        transform.position = Vector3.MoveTowards(
-            transform.position,
-            newPosition,
-            speed * Time.fixedDeltaTime
-        );
+        rb.MovePosition(transform.position + new Vector3(-x_, 0, 0) * speed * Time.fixedDeltaTime);
+        // transform.position = Vector3.MoveTowards(
+        //     transform.position,
+        //     newPosition,
+        //     speed * Time.fixedDeltaTime
+        // );
         moving = true;
     }
 
@@ -159,11 +162,12 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 newPosition = transform.position + new Vector3(0, y_, 0);
         newPosition.y = Mathf.Round(newPosition.y);
-        transform.position = Vector3.MoveTowards(
-            transform.position,
-            newPosition,
-            speed * Time.fixedDeltaTime
-        );
+        rb.MovePosition(transform.position + new Vector3(0, y_, 0) * speed * Time.fixedDeltaTime);
+        // transform.position = Vector3.MoveTowards(
+        //     transform.position,
+        //     newPosition,
+        //     speed * Time.fixedDeltaTime
+        // );
         moving = true;
     }
 
