@@ -100,8 +100,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   yarnCubeExplosion: {fileID: 5091275961284384965, guid: e6d0a842b51974db89d505e16dbd5b3b,
     type: 3}
-  particleSpawner: {fileID: 6384077127206935519, guid: 64e7a851ec7a641f099db13419544a8d,
-    type: 3}
 --- !u!54 &6402615593395868741
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -125,7 +123,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
