@@ -27,9 +27,9 @@ public class SeenByPlayer : MonoBehaviour
 
     void SetObjectOnTopOfCotton()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.5f);
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1.0f);
         gameObject.GetComponent<MeshRenderer>().enabled = true;
-}
+    }
 
     float GetDistanceToPlayer() 
     {
