@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5236727954954326691}
-  - component: {fileID: 6384077127206935519}
+  - component: {fileID: 5554070499788866121}
   m_Layer: 0
   m_Name: CottonParticleSpawner
   m_TagString: CottonParticleSpawner
@@ -30,9 +30,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6384077127206935519
+--- !u!114 &5554070499788866121
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,8 +41,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8708439581607787217}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 929c9ef85bb2f4e84b4b3d4edff4138f, type: 3}
+  m_Script: {fileID: 11500000, guid: f071a2054fe7841299dbbb665e7e452f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particlePrefab: {fileID: 5091275961284384965, guid: e6d0a842b51974db89d505e16dbd5b3b,
-    type: 3}
+  prefab: {fileID: 7698931405383197908, guid: e6d0a842b51974db89d505e16dbd5b3b, type: 3}
+  poolSize: 30
+  maxPoolSize: 40

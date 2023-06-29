@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.Pool;
 public abstract class ParticlePool : MonoBehaviour
 {
-    private ParticleSpawner particleSpawner;
-    private Queue<ParticleSystem> _pool;
-    private ParticleSystem _particleSystem;
+    private Pool particleSpawner;
+    private GameObject _particleSystem;
     private string particleSpawnerTag;
     // Start is called before the first frame update
     void Start()
@@ -17,7 +16,7 @@ public abstract class ParticlePool : MonoBehaviour
 
     private void OnParticleSystemStopped() 
     {
-        particleSpawner.ReturnParticle(_particleSystem);
+        particleSpawner.ReturnObject(this.gameObject);
     }
 
     public void SetParticleSapwnerTag(string tag)
@@ -30,14 +29,12 @@ public abstract class ParticlePool : MonoBehaviour
     private void SetPool()
     {
         SetParticleSpawner();
-        particleSpawner = GameObject.FindWithTag(particleSpawnerTag).GetComponent<ParticleSpawner>();
-        _particleSystem = GetComponent<ParticleSystem>();
-        _pool = particleSpawner.pool;
+        particleSpawner = GameObject.FindWithTag(particleSpawnerTag).GetComponent<Pool>();
     }
 
     private void SetStopActionToCallback()
     {
-        ParticleSystem.MainModule main = _particleSystem.main;
+        ParticleSystem.MainModule main = GetComponent<ParticleSystem>().main;
         main.stopAction = ParticleSystemStopAction.Callback;
     }
 }

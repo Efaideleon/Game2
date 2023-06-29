@@ -33,29 +33,19 @@ public class ObjectsSpawnManager : MonoBehaviour
         bottomLimit = Mathf.RoundToInt(cottonSpawnManagerScript.bottomWall.transform.position.y) + offset;
         
         SpawnRubberBalls();
-        SpawnBatteries();
-        SpawnButtons();
+        SpawnGoodies(numOfBatteriesToSpawn, batteriesObject);
+        SpawnGoodies(numOfButtonsToSpawn, clothButtonsObject);
     }
 
     // Update is called once per frame
     void Update() { }
 
-    public void SpawnBatteries()
-    {
-        for (int i = 0; i < numOfBatteriesToSpawn; i++)
-        {
-            GameObject batteryObject = batteriesObject.transform.GetChild(i).gameObject; 
-            batteryObject.SetActive(true);
-            batteryObject.GetComponent<MeshRenderer>().enabled = false;
-            batteryObject.transform.position = new Vector3(GetRandomX(), GetRandomY(), 0);
-        }
-    }
 
-    public void SpawnButtons()
+    public void SpawnGoodies(int numToSpawn, GameObject goodiesObjectContainer)
     {
-        for (int i = 0; i < numOfButtonsToSpawn; i++)
+        for (int i = 0; i < numToSpawn; i++)
         {
-            GameObject buttonObject = clothButtonsObject.transform.GetChild(i).gameObject;
+            GameObject buttonObject = goodiesObjectContainer.transform.GetChild(i).gameObject;
             buttonObject.SetActive(true);
             buttonObject.GetComponent<MeshRenderer>().enabled = false;
             buttonObject.transform.position = new Vector3(GetRandomX(), GetRandomY(), 0);
