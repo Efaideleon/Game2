@@ -4,36 +4,37 @@ using UnityEngine;
 
 public class SpawnEnemiesManager : MonoBehaviour
 {
-    [SerializeField] GameObject needleEnemyPrefab;
-    private int numOfNeedleEnemiesToSpawn = 1;
+    [SerializeField] GameManager gameManager;
+    private int numOfNeedleEnemiesToSpawn = 3;
     private int needleEnemyStartX = -35;
     private int needleEnemyStartY = 24;
+    private Pool pool;
 
     // Start is called before the first frame update
     void Start()
     {
-        SpawnNeedleEnemies();
+        pool = GetComponent<Pool>();
+        StartCoroutine(SpawnNeedleEnemiesCoroutine(numOfNeedleEnemiesToSpawn));
+
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    void Update(){}
+
     public void SpawnNeedleEnemy()
     {
-        Instantiate(
-            needleEnemyPrefab,
-            new Vector3(needleEnemyStartX, needleEnemyStartY, 0),
-            needleEnemyPrefab.transform.rotation
-        );
+        GameObject enemy = pool.GetObject();
+        enemy.transform.position = new Vector3(needleEnemyStartX, needleEnemyStartY, 0);
+        gameManager.UpdateNumOfEnemiesOnScreen(1); 
     }
 
-    public void SpawnNeedleEnemies()
+    IEnumerator SpawnNeedleEnemiesCoroutine(int numOfEnemies)
     {
-        for (int i = 0; i < numOfNeedleEnemiesToSpawn; i++)
+        while (true)
         {
-            SpawnNeedleEnemy();
+            yield return new WaitForSeconds(3.0f);
+            if (gameManager.GetNumOfEnemiesOnScreen() < numOfEnemies)
+                SpawnNeedleEnemy();
         }
     }
 }

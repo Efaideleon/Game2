@@ -22,6 +22,7 @@ public class NeedleEnemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             gameManager.UpdateScore(10);
+            gameManager.UpdateNumOfEnemiesOnScreen(-1);
             Destroy(gameObject);
         }
     }

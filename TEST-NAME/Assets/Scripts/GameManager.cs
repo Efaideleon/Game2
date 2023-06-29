@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     private int score;
     private int buttonsCollected = 0;
     private bool isGameActive;
+    private int numOfEnemiesOnScreen = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,5 +60,15 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void UpdateNumOfEnemiesOnScreen(int numOfEnemies)
+    {
+        numOfEnemiesOnScreen += numOfEnemies;
+    }
+
+    public int GetNumOfEnemiesOnScreen()
+    {
+        return numOfEnemiesOnScreen;
     }
 }
