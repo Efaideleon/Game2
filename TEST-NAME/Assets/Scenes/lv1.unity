@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18183804, g: 0.22751212, b: 0.30741927, a: 1}
+  m_IndirectSpecularColor: {r: 0.18183607, g: 0.22751057, b: 0.3074211, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1455,6 +1455,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: pillar_UPRIGHT (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1284810824053651964, guid: 3df0ec090d23c419d843e752c613761b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3081823991682784259, guid: 3df0ec090d23c419d843e752c613761b,
         type: 3}
       propertyPath: m_RootOrder
@@ -1784,6 +1789,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: pillar_UPRIGHT (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284810824053651964, guid: 3df0ec090d23c419d843e752c613761b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3081823991682784259, guid: 3df0ec090d23c419d843e752c613761b,
         type: 3}
@@ -2177,6 +2187,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: pillar_UPRIGHT (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1284810824053651964, guid: 3df0ec090d23c419d843e752c613761b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3081823991682784259, guid: 3df0ec090d23c419d843e752c613761b,
         type: 3}
       propertyPath: m_RootOrder
@@ -2383,7 +2398,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -2444,6 +2459,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: pillar_UPRIGHT (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284810824053651964, guid: 3df0ec090d23c419d843e752c613761b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3081823991682784259, guid: 3df0ec090d23c419d843e752c613761b,
         type: 3}
@@ -3177,6 +3197,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: pillar_UPRIGHT
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284810824053651964, guid: 3df0ec090d23c419d843e752c613761b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3081823991682784259, guid: 3df0ec090d23c419d843e752c613761b,
         type: 3}
