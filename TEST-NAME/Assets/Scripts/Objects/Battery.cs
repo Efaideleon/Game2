@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Battery : MonoBehaviour
 {
-    private ParticleSpawner particleSpawner;
+    private Pool particleSpawner;
     // Start is called before the first frame update
     
     void Start()
     {
         //may need to fix
-        particleSpawner = GameObject.FindGameObjectWithTag("BatteryParticleSpawner").GetComponent<ParticleSpawner>();
+        particleSpawner = GameObject.FindGameObjectWithTag("BatteryParticleSpawner").GetComponent<Pool>();
     }
 
     // Update is called once per frame
@@ -22,7 +22,7 @@ public class Battery : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            ParticleSystem particle = particleSpawner.GetParticle();
+            ParticleSystem particle = particleSpawner.GetObject().GetComponent<ParticleSystem>();
             particle.transform.position = transform.position;
             particle.Play();
         }
