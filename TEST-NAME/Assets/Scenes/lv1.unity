@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18183607, g: 0.22751057, b: 0.3074211, a: 1}
+  m_IndirectSpecularColor: {r: 0.18183804, g: 0.22751212, b: 0.30741927, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3393,6 +3393,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8874002911072001451, guid: a259c10e54df04e75aac93e7559c0a63,
         type: 3}
+    - target: {fileID: -7555356942552179112, guid: fe7c0c0be8f00412fa0359e047ec3386,
+        type: 3}
+      propertyPath: numOfNeedleEnemiesToSpawn
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7849223986445460621, guid: fe7c0c0be8f00412fa0359e047ec3386,
         type: 3}
       propertyPath: m_Name
