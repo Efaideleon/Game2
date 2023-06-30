@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -3095583209843601374}
   - component: {fileID: -1228235363214489388}
   m_Layer: 0
-  m_Name: yarnboxv3
+  m_Name: yarnboxv3blue
   m_TagString: Cotton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7c3afa1948fcc4dae942f45e883248be, type: 2}
+  - {fileID: 2100000, guid: 058da2934848e4134b5b0f3611a3d56b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
