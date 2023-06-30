@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnEnemiesManager : MonoBehaviour
 {
     [SerializeField] GameManager gameManager;
-    private int numOfNeedleEnemiesToSpawn = 3;
+    public int numOfNeedleEnemiesToSpawn = 3;
     private int needleEnemyStartX = -35;
     private int needleEnemyStartY = 24;
     private Pool pool;
