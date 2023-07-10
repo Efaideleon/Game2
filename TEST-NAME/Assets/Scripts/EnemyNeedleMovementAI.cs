@@ -5,115 +5,116 @@ using UnityEngine.AI;
 
 public class EnemyNeedleMovementAI : MonoBehaviour
 {
-    [SerializeField] NavMeshAgent agent; 
-    [SerializeField] LayerMask cottonLayerMask;
-    [SerializeField] LayerMask wallsLayerMask;
-    private Vector3 destPoint; 
-    private bool moving = false;
-    private enum Direction
+    private int gridWidth = 40;
+    private int gridHeight = 30;
+    public float gridSpacing = 2f;
+    public LayerMask obstacleMask;
+
+    private Dictionary<Vector3, bool> waypointDict; // Changed to Dictionary
+    private Vector3 currentDestination;
+
+    private NavMeshAgent agent;
+
+    private void Start()
     {
-        Horizontal,
-        Vertical
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
+        agent = GetComponent<NavMeshAgent>();
+
+        if (agent == null)
+        {
+            Debug.LogError("No NavMeshAgent component found on this game object.");
+            return;
+        }
+
+        waypointDict = new Dictionary<Vector3, bool>(); // Initialize Dictionary
+
+        // Generate waypoints
+        for (int x = 0; x < gridWidth; x++)
+        {
+            for (int y = 0; y < gridHeight; y++)
+            {
+                float xPos = x * gridSpacing;
+                float yPos = y * gridSpacing;
+                Vector3 waypoint = new Vector3(-xPos, yPos, 0);
+
+                // Add all waypoints to the dictionary, mark blocked ones
+                if (Physics.CheckSphere(waypoint, 1f, obstacleMask))
+                {
+                    waypointDict[waypoint] = false; // Waypoint blocked
+                }
+                else
+                {
+                    waypointDict[waypoint] = true; // Waypoint free
+                }
+            }
+        }
+
+        // Set initial destination
+        SetRandomDestination();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (!moving)
+        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
         {
-            FindFinalDestination();
-            destPoint.z = -1.46f;
-            Debug.Log("Destination: " + destPoint);
-            agent.SetDestination(destPoint);
-            moving = true;
-        }
-        if (IsDestinationReached())
-        {
-            Debug.Log("Destination Reached");
-            moving = false;
-        }
-    }
-    void FindFinalDestination()
-    {
-        FindRandomPoint();
-        while(!IsPointAvailable((int)destPoint.x, (int)destPoint.y))
-        {
-            FindRandomPoint();
-        }
-    }
-
-    void FindRandomPoint()
-    {
-        Direction direction = PickRandomDirection();
-        switch(direction)
-        {
-            case Direction.Horizontal:
-                destPoint.x = FindRandomX();
-                destPoint.y = transform.position.y;
-                break;
-            case Direction.Vertical:
-                destPoint.x = transform.position.x;
-                destPoint.y = FindRandomY();
-                break;
+            SetRandomDestination();
         }
     }
 
-    int FindRandomX()
+    private void SetRandomDestination()
     {
-        int x = Random.Range(-37, 1);
-        return x;
-    }
+        List<Vector3> freeWaypoints = new List<Vector3>();
 
-    int FindRandomY()
-    {
-        int y = Random.Range(2, 25);
-        return y;
-    }    
-
-    bool IsPointAvailable(int x, int y)
-    {
-        Vector3 raycastPoint = new Vector3(x, y, 5);
-
-        RaycastHit hit;
-        if (Physics.Raycast(raycastPoint, Vector3.back, out hit, 10, cottonLayerMask)
-            || Physics.Raycast(raycastPoint, Vector3.back, out hit, 10, wallsLayerMask))
+        foreach (KeyValuePair<Vector3, bool> waypoint in waypointDict)
         {
-            Debug.Log("Point " + x + " " + y + "is not available");
-            Debug.DrawLine(raycastPoint, hit.point, Color.white, 10);
-            return false;
+            if (waypoint.Value == true) // If the waypoint is free
+            {
+                freeWaypoints.Add(waypoint.Key);
+            }
         }
-        else 
+
+        if (freeWaypoints.Count > 0)
         {
-            Debug.Log("Point " + x + " " + y + " available");
-            Debug.DrawLine(raycastPoint, hit.point, Color.red, 10);
-            return true;
+            Vector3 randomDestination = freeWaypoints[Random.Range(0, freeWaypoints.Count)];
+            agent.SetDestination(randomDestination);
+            currentDestination = randomDestination;
         }
     }
 
-    Direction PickRandomDirection()
+    public void UnblockWaypoint(Vector3 position, float tolerance = 1f)
     {
-        int direction = Random.Range(0, 2);
-        if (direction == 0)
+        Vector3 closestWaypoint = Vector3.positiveInfinity;
+        float closestDistance = Mathf.Infinity;
+
+        foreach (Vector3 waypoint in waypointDict.Keys)
         {
-            return Direction.Horizontal;
+            float distance = Vector3.Distance(position, waypoint);
+
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestWaypoint = waypoint;
+            }
         }
-        else
+
+        if (closestDistance <= tolerance)
         {
-            return Direction.Vertical;
+            waypointDict[closestWaypoint] = true; // Unblock waypoint
         }
     }
 
-    bool IsDestinationReached()
+    void OnDrawGizmosSelected()
     {
-        float dist = Vector3.Distance(destPoint, transform.position);
-        if (dist < 2f)
+        if (waypointDict != null)
         {
-            return true;
+            foreach (KeyValuePair<Vector3, bool> waypoint in waypointDict)
+            {
+                Gizmos.color = waypoint.Value ? Color.red : Color.gray; // Blocked waypoints will be gray
+                if (waypoint.Key == currentDestination)
+                {
+                    Gizmos.color = Color.blue;
+                }
+                Gizmos.DrawSphere(waypoint.Key, 0.5f);
+            }
         }
-        return false;
     }
 }

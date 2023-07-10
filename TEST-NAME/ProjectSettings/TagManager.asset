@@ -12,6 +12,7 @@ TagManager:
   - BatteryParticleSpawner
   - CottonParticleSpawner
   - Pillar
+  - Enemy
   layers:
   - Default
   - TransparentFX

@@ -980,6 +980,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AI Needle Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3048955189704886107, guid: f6e374affc4e448c084fede3a282089a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4314783127951848086, guid: f6e374affc4e448c084fede3a282089a,
         type: 3}
       propertyPath: m_Size.x
@@ -1081,13 +1086,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04a90d74bc33e4b538dbd5242a4f4d78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 704613603}
-  cottonLayerMask:
+  gridSpacing: 1
+  obstacleMask:
     serializedVersion: 2
-    m_Bits: 64
-  wallsLayerMask:
-    serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 576
 --- !u!195 &704613603
 NavMeshAgent:
   m_ObjectHideFlags: 0
