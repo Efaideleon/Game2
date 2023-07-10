@@ -11,6 +11,7 @@ TagManager:
   - NeedleEnemy
   - BatteryParticleSpawner
   - CottonParticleSpawner
+  - Pillar
   layers:
   - Default
   - TransparentFX
@@ -20,9 +21,9 @@ TagManager:
   - UI
   - Cotton Blocks
   - On Top Of Cotton Blocks
-  - 
-  - 
-  - 
+  - Nav Surface
+  - Walls
+  - Barrier
   - 
   - 
   - 

@@ -75,7 +75,7 @@ public class ObjectsSpawnManager : MonoBehaviour
             rubberBallPrefab.transform.rotation
         );
 
-        Debug.Log(rubberBallInstance.GetComponent<RubberBall>().CollidesWithRubberBall());
+        //Debug.Log(rubberBallInstance.GetComponent<RubberBall>().CollidesWithRubberBall());
         if (rubberBallInstance.GetComponent<RubberBall>().CollidesWithRubberBall())
         {
             Debug.Log("Collides with another rubber ball");

@@ -14,7 +14,7 @@ public class SpawnEnemiesManager : MonoBehaviour
     void Start()
     {
         pool = GetComponent<Pool>();
-        StartCoroutine(SpawnNeedleEnemiesCoroutine(numOfNeedleEnemiesToSpawn));
+        //StartCoroutine(SpawnNeedleEnemiesCoroutine(numOfNeedleEnemiesToSpawn));
 
     }
 
