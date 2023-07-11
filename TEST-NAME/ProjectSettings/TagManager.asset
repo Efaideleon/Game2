@@ -13,6 +13,7 @@ TagManager:
   - CottonParticleSpawner
   - Pillar
   - Enemy
+  - NeedleEnemySpawner
   layers:
   - Default
   - TransparentFX
@@ -25,7 +26,7 @@ TagManager:
   - Nav Surface
   - Walls
   - Barrier
-  - 
+  - Enemy
   - 
   - 
   - 

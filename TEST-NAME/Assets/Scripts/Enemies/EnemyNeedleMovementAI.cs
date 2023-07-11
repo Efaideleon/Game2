@@ -6,19 +6,29 @@ using UnityEngine.AI;
 public class EnemyNeedleMovementAI : MonoBehaviour
 {
     private int gridWidth = 40;
-    private int gridHeight = 30;
+    private int gridHeight = 27;
     public float gridSpacing = 2f;
     public LayerMask obstacleMask;
 
     private Dictionary<Vector3, bool> waypointDict; // Changed to Dictionary
     private Vector3 currentDestination;
 
-    private NavMeshAgent agent;
+    [SerializeField] NavMeshAgent agent;
+    bool created = false;
+
+    void OnEnable()
+    {
+        if (created)
+        {
+            agent.transform.position = new Vector3(-35, 26, 1);
+            agent.enabled = true;
+        }
+    }
 
     private void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
-
+        created = true;
+        agent.enabled = true;
         if (agent == null)
         {
             Debug.LogError("No NavMeshAgent component found on this game object.");
@@ -54,7 +64,7 @@ public class EnemyNeedleMovementAI : MonoBehaviour
 
     private void Update()
     {
-        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+        if (!agent.pathPending && agent.remainingDistance <= 2f && agent.enabled == true)
         {
             SetRandomDestination();
         }

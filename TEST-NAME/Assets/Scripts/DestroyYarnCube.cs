@@ -5,13 +5,12 @@ using UnityEngine;
 public class DestroyYarnCube : MonoBehaviour
 {
     [SerializeField] ParticleSystem yarnCubeExplosion;
+    [SerializeField] EnemyNeedleMovementAI patrolAgent;
     private Pool particleSpawner;
-    private EnemyNeedleMovementAI patrolAgent;
     void Start()
     {
         //may need to fix
         particleSpawner = GameObject.FindWithTag("CottonParticleSpawner").GetComponent<Pool>();
-        patrolAgent = GameObject.FindWithTag("Enemy").GetComponent<EnemyNeedleMovementAI>();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -23,7 +22,7 @@ public class DestroyYarnCube : MonoBehaviour
             particle.Play();
             //gameObject should be set inactive instead of destroyed
             gameObject.SetActive(false);
-            patrolAgent.UnblockWaypoint(transform.position);
+            //patrolAgent.UnblockWaypoint(transform.position);
         }
     }
 }

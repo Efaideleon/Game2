@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8066063743136196366}
   - component: {fileID: -7555356942552179112}
+  - component: {fileID: 3903306709001391196}
   m_Layer: 0
   m_Name: Spawn Enemies Manager
-  m_TagString: Untagged
+  m_TagString: NeedleEnemySpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,3 +45,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 341671b651d5d47069d693f7c8e0c50f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  numOfNeedleEnemiesToSpawn: 3
+--- !u!114 &3903306709001391196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7849223986445460621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f071a2054fe7841299dbbb665e7e452f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 3048955189704886107, guid: f6e374affc4e448c084fede3a282089a, type: 3}
+  poolSize: 10
+  maxPoolSize: 20
