@@ -13,12 +13,11 @@ public class EnemyNeedleMovementAI : MonoBehaviour
     private Dictionary<Vector3, bool> waypointDict; // Changed to Dictionary
     private Vector3 currentDestination;
 
-    private NavMeshAgent agent;
+    [SerializeField] NavMeshAgent agent;
 
     private void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
-
+        agent.enabled = true;
         if (agent == null)
         {
             Debug.LogError("No NavMeshAgent component found on this game object.");
@@ -54,7 +53,7 @@ public class EnemyNeedleMovementAI : MonoBehaviour
 
     private void Update()
     {
-        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+        if (!agent.pathPending && agent.remainingDistance <= 2f)
         {
             SetRandomDestination();
         }

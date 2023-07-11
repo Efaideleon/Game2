@@ -7,14 +7,14 @@ public class SpawnEnemiesManager : MonoBehaviour
     [SerializeField] GameManager gameManager;
     public int numOfNeedleEnemiesToSpawn = 3;
     private int needleEnemyStartX = -35;
-    private int needleEnemyStartY = 24;
+    private int needleEnemyStartY = 26;
     private Pool pool;
 
     // Start is called before the first frame update
     void Start()
     {
         pool = GetComponent<Pool>();
-        //StartCoroutine(SpawnNeedleEnemiesCoroutine(numOfNeedleEnemiesToSpawn));
+        StartCoroutine(SpawnNeedleEnemiesCoroutine(numOfNeedleEnemiesToSpawn));
 
     }
 
@@ -24,7 +24,7 @@ public class SpawnEnemiesManager : MonoBehaviour
     public void SpawnNeedleEnemy()
     {
         GameObject enemy = pool.GetObject();
-        enemy.transform.position = new Vector3(needleEnemyStartX, needleEnemyStartY, 0);
+        enemy.transform.position = new Vector3(needleEnemyStartX, needleEnemyStartY, 1);
         gameManager.UpdateNumOfEnemiesOnScreen(1); 
     }
 

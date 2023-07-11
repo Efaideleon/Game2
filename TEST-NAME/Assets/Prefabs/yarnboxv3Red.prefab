@@ -120,6 +120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yarnCubeExplosion: {fileID: 0}
+  patrolAgent: {fileID: 2595435882306558065, guid: f6e374affc4e448c084fede3a282089a,
+    type: 3}
 --- !u!208 &2995885004187872833
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -131,7 +133,7 @@ NavMeshObstacle:
   serializedVersion: 3
   m_Shape: 1
   m_Extents: {x: 0.0050000004, y: 0.010000001, z: 0.0050000004}
-  m_MoveThreshold: 0.1
+  m_MoveThreshold: 5
   m_Carve: 1
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
