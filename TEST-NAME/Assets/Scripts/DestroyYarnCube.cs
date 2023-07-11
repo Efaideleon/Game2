@@ -22,7 +22,7 @@ public class DestroyYarnCube : MonoBehaviour
             particle.Play();
             //gameObject should be set inactive instead of destroyed
             gameObject.SetActive(false);
-            patrolAgent.UnblockWaypoint(transform.position);
+            //patrolAgent.UnblockWaypoint(transform.position);
         }
     }
 }

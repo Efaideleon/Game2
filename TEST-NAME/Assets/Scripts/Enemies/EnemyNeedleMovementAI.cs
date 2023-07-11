@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class EnemyNeedleMovementAI : MonoBehaviour
 {
     private int gridWidth = 40;
-    private int gridHeight = 30;
+    private int gridHeight = 27;
     public float gridSpacing = 2f;
     public LayerMask obstacleMask;
 
@@ -14,9 +14,20 @@ public class EnemyNeedleMovementAI : MonoBehaviour
     private Vector3 currentDestination;
 
     [SerializeField] NavMeshAgent agent;
+    bool created = false;
+
+    void OnEnable()
+    {
+        if (created)
+        {
+            agent.transform.position = new Vector3(-35, 26, 1);
+            agent.enabled = true;
+        }
+    }
 
     private void Start()
     {
+        created = true;
         agent.enabled = true;
         if (agent == null)
         {
@@ -53,7 +64,7 @@ public class EnemyNeedleMovementAI : MonoBehaviour
 
     private void Update()
     {
-        if (!agent.pathPending && agent.remainingDistance <= 2f)
+        if (!agent.pathPending && agent.remainingDistance <= 2f && agent.enabled == true)
         {
             SetRandomDestination();
         }
