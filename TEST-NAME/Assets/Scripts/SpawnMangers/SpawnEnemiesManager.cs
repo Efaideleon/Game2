@@ -8,6 +8,7 @@ public class SpawnEnemiesManager : MonoBehaviour
     public int numOfNeedleEnemiesToSpawn = 3;
     private int needleEnemyStartX = -35;
     private int needleEnemyStartY = 26;
+    private int needleEnemyStartZ = 1;
     private Pool pool;
 
     // Start is called before the first frame update
@@ -24,7 +25,7 @@ public class SpawnEnemiesManager : MonoBehaviour
     public void SpawnNeedleEnemy()
     {
         GameObject enemy = pool.GetObject();
-        enemy.transform.position = new Vector3(needleEnemyStartX, needleEnemyStartY, 1);
+        enemy.transform.position = new Vector3(needleEnemyStartX, needleEnemyStartY, needleEnemyStartZ);
         gameManager.UpdateNumOfEnemiesOnScreen(1); 
     }
 

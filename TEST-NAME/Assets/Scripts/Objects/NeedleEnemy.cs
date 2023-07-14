@@ -26,11 +26,15 @@ public class NeedleEnemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            gameManager.UpdateScore(10);
-            gameManager.UpdateNumOfEnemiesOnScreen(-1);
-            gameObject.SetActive(false);
-            needleEnemyNavMeshAgent.enabled = false;
-            enemySpawner.ReturnObject(gameObject);
         }
+    }
+
+    public void KillEnemy()
+    {
+        gameManager.UpdateScore(10);
+        gameManager.UpdateNumOfEnemiesOnScreen(-1);
+        gameObject.SetActive(false);
+        needleEnemyNavMeshAgent.enabled = false;
+        enemySpawner.ReturnObject(gameObject);
     }
 }
