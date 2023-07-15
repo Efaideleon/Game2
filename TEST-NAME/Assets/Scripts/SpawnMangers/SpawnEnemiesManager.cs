@@ -25,6 +25,7 @@ public class SpawnEnemiesManager : MonoBehaviour
     public void SpawnNeedleEnemy()
     {
         GameObject enemy = pool.GetObject();
+        enemy.GetComponent<NeedleEnemy>().ResetHealth(); 
         enemy.transform.position = new Vector3(needleEnemyStartX, needleEnemyStartY, needleEnemyStartZ);
         gameManager.UpdateNumOfEnemiesOnScreen(1); 
     }
