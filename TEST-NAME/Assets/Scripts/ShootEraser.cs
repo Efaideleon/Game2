@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.VFX;
 public class ShootEraser : MonoBehaviour
 {
     [SerializeField] GameObject eraser;
+    [SerializeField] GameObject eraserShootingParticlePrefab;
     private EraserMovement eraserMovement;
     private Vector3 eraserDirection;
     private Rigidbody eraserRb;
     private float speed = 20f;
+    private float eraserMaxDistance = 10f;
+    private float leftAngle = 90f;
+    private float rightAngle = 270f;
     bool isFlying = false;
     Direction eraserDirectionEnum;
     enum Direction{
@@ -27,7 +31,10 @@ public class ShootEraser : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && !isFlying)
         {
+            eraserShootingParticlePrefab.GetComponent<VisualEffect>().Play();
             SetEraserDirection();
+            SetEraserPosition(1f);
+            SetEraserVFXPosition(1f);
             eraserMovement.LaunchEraser();
             isFlying = true;
         }
@@ -47,29 +54,60 @@ public class ShootEraser : MonoBehaviour
         }
     }
 
-    void SetEraserStartPositionWithOffset(int offset)
+    void OffsetVFXPosition(float offset)
     {
-        eraser.transform.position = transform.position + new Vector3(offset, 0, 0);
+        Vector3 eraserParticlePosition = transform.position;
+        eraserParticlePosition.x += offset;
+        eraserShootingParticlePrefab.transform.position = eraserParticlePosition;
     }
 
+    void SetEraserVFXPosition(float offset)
+    {
+        switch(eraserDirectionEnum)
+        {
+            case Direction.Left:
+                OffsetVFXPosition(-offset);
+                break;
+            case Direction.Right:
+                OffsetVFXPosition(offset);
+                break;
+        }
+    }
+
+    void OffsetEraserPosition(float offset)
+    {
+        Vector3 eraserPosition = transform.position;
+        eraserPosition.x += offset;
+        eraser.transform.position = eraserPosition;
+    }
+
+    void SetEraserPosition(float offset)
+    {
+        switch(eraserDirectionEnum)
+        {
+            case Direction.Left:
+                OffsetEraserPosition(-offset);
+                break;
+            case Direction.Right:
+                OffsetEraserPosition(offset);
+                break;
+        }
+    }
     void SetEraserDirection()
     {
-        if (transform.rotation.eulerAngles.y ==  90)
+        if (transform.rotation.eulerAngles.y ==  leftAngle)
         {
             eraserDirection = Vector3.left;
-            SetEraserStartPositionWithOffset(-1);
         }
-        else if (transform.rotation.eulerAngles.y == 270)
+        else if (transform.rotation.eulerAngles.y == rightAngle)
         {
             eraserDirection = Vector3.right;
-            SetEraserStartPositionWithOffset(1);
         }
     }
-
 
     bool IsEraserAtMaxDistance()
     {
-        if (Vector3.Distance(eraser.transform.position, transform.position) > 10)
+        if (Vector3.Distance(eraser.transform.position, transform.position) > eraserMaxDistance)
         {
             return true;
         }
