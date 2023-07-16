@@ -5,6 +5,7 @@ using UnityEngine.AI;
 using UnityEngine.VFX;
 public class NeedleEnemy : MonoBehaviour
 {
+    private Animator needleEnemyAnimator;
     private GameManager gameManager;
     private NavMeshAgent needleEnemyNavMeshAgent;
     private Pool enemySpawner;
@@ -18,6 +19,7 @@ public class NeedleEnemy : MonoBehaviour
         needleEnemyNavMeshAgent = GetComponent<NavMeshAgent>();
         enemySpawner = GameObject.FindWithTag("NeedleEnemySpawner").GetComponent<Pool>();
         VFXSpawner = GameObject.FindWithTag("VFXSpawner").GetComponent<Pool>();
+        needleEnemyAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
