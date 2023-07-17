@@ -12,6 +12,7 @@ public class NeedleEnemy : MonoBehaviour
     private Pool VFXSpawner;
     private VisualEffect needleEnemyDeathVFX;
     private int health = 5;
+    private Material material;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class NeedleEnemy : MonoBehaviour
         enemySpawner = GameObject.FindWithTag("NeedleEnemySpawner").GetComponent<Pool>();
         VFXSpawner = GameObject.FindWithTag("VFXSpawner").GetComponent<Pool>();
         needleEnemyAnimator = GetComponent<Animator>();
+        material = GetComponentInChildren<Renderer>().material;
     }
 
     // Update is called once per frame
@@ -43,7 +45,7 @@ public class NeedleEnemy : MonoBehaviour
     public void KillEnemy()
     {
         health--;
-        
+        material.color = Color.Lerp(Color.red, Color.white, health / 5f);    
         Debug.Log(health);
         if (health <= 0)
         {
@@ -59,6 +61,7 @@ public class NeedleEnemy : MonoBehaviour
         gameManager.UpdateScore(10);
         gameManager.UpdateNumOfEnemiesOnScreen(-1);
         gameObject.SetActive(false);
+        material.color = Color.white;
         needleEnemyNavMeshAgent.enabled = false;
         enemySpawner.ReturnObject(gameObject);
     } 

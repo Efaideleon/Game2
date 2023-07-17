@@ -15,6 +15,7 @@ public class EnemyNeedleMovementAI : MonoBehaviour
 
     [SerializeField] NavMeshAgent agent;
     bool created = false;
+    bool stop = false;
 
     void OnEnable()
     {
@@ -68,6 +69,7 @@ public class EnemyNeedleMovementAI : MonoBehaviour
         {
             SetRandomDestination();
         }
+        ControlAgentStop();
     }
 
     private void SetRandomDestination()
@@ -126,5 +128,30 @@ public class EnemyNeedleMovementAI : MonoBehaviour
                 Gizmos.DrawSphere(waypoint.Key, 0.5f);
             }
         }
+    }
+
+    void ControlAgentStop()
+    {
+        if (stop)
+        {
+            agent.isStopped = true;
+        }
+        else
+        {
+            agent.isStopped = false;
+        }
+    }
+
+    public void SetStop(bool stop)
+    {
+        Debug.Log("Stop set to " + stop);
+        this.stop = stop;
+        StartCoroutine(StopForSeconds(1f));
+    }
+
+    IEnumerator StopForSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        this.stop = false;
     }
 }
