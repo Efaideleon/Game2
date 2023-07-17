@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator playerAnimator;
     [SerializeField] GameManager gameManager;
     private Rigidbody rb;
+    private int health = 5;
     enum MoveDirection
     {
         None,
@@ -173,5 +174,19 @@ public class PlayerMovement : MonoBehaviour
 
     void Flip() {
         transform.Rotate(0f, 180f, 0f);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            health--;
+            collision.gameObject.GetComponent<EnemyNeedleMovementAI>().SetStop(true);
+            Debug.Log(health); 
+            if (health <= 0)
+            {
+                gameManager.SetGameComplete();
+            }
+        }
     }
 }

@@ -35,6 +35,7 @@ public class EraserMovement : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             Debug.Log("Enemy hit");
+            collision.gameObject.GetComponent<EnemyNeedleMovementAI>().SetStop(true);
             collision.gameObject.GetComponent<NeedleEnemy>().KillEnemy();
         }
         KillEraser();
