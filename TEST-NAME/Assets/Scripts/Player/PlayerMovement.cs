@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -151,11 +150,6 @@ public class PlayerMovement : MonoBehaviour
         Vector3 newPosition = transform.position + new Vector3(-x_, 0, 0);
         newPosition.x = Mathf.Round(newPosition.x);
         rb.MovePosition(transform.position + new Vector3(-x_, 0, 0) * speed * Time.fixedDeltaTime);
-        // transform.position = Vector3.MoveTowards(
-        //     transform.position,
-        //     newPosition,
-        //     speed * Time.fixedDeltaTime
-        // );
         moving = true;
     }
 
@@ -164,12 +158,16 @@ public class PlayerMovement : MonoBehaviour
         Vector3 newPosition = transform.position + new Vector3(0, y_, 0);
         newPosition.y = Mathf.Round(newPosition.y);
         rb.MovePosition(transform.position + new Vector3(0, y_, 0) * speed * Time.fixedDeltaTime);
-        // transform.position = Vector3.MoveTowards(
-        //     transform.position,
-        //     newPosition,
-        //     speed * Time.fixedDeltaTime
-        // );
         moving = true;
+    }
+
+    void MoveAllDirections(float x_, float y_)
+    {
+        x_ *= 1.4f;
+        y_ *= 1.4f;
+        x_ = Mathf.Clamp(x_, -1.3f, 1.3f);
+        y_ = Mathf.Clamp(y_, -1.3f, 1.3f);
+        rb.MovePosition(transform.position + new Vector3(x_, y_, 0) * speed * Time.fixedDeltaTime);
     }
 
     void Flip() {
@@ -188,5 +186,28 @@ public class PlayerMovement : MonoBehaviour
                 gameManager.SetGameComplete();
             }
         }
+    }
+
+    public void MoveVector(Vector2 moveVector)
+    {
+        if (moveVector.x < 0)
+        {
+            if (isFacingRight)
+            {
+                Flip();
+                playerAnimator.SetTrigger("turning_left_t");
+                isFacingRight = false;
+            }
+        }
+        else if (moveVector.x > 0)
+        {
+            if (!isFacingRight)
+            {
+                Flip();
+                playerAnimator.SetTrigger("turning_right_t");
+                isFacingRight = true;
+            }
+        }
+        MoveAllDirections(-moveVector.x, moveVector.y);
     }
 }

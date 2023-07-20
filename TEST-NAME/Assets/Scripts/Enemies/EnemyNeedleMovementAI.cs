@@ -23,6 +23,7 @@ public class EnemyNeedleMovementAI : MonoBehaviour
         {
             agent.transform.position = new Vector3(-35, 26, 1);
             agent.enabled = true;
+            stop = false;
         }
     }
 
