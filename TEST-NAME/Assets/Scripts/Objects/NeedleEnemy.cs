@@ -7,6 +7,7 @@ public class NeedleEnemy : MonoBehaviour
 {
     private Animator needleEnemyAnimator;
     private GameManager gameManager;
+    private EnemyNeedleMovementAI needleEnemyMovementAI;
     private NavMeshAgent needleEnemyNavMeshAgent;
     private Pool enemySpawner;
     private Pool VFXSpawner;
@@ -22,12 +23,16 @@ public class NeedleEnemy : MonoBehaviour
         VFXSpawner = GameObject.FindWithTag("VFXSpawner").GetComponent<Pool>();
         needleEnemyAnimator = GetComponent<Animator>();
         material = GetComponentInChildren<Renderer>().material;
+        needleEnemyMovementAI = GetComponent<EnemyNeedleMovementAI>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (!gameManager.IsGameActive())
+        {
+            needleEnemyMovementAI.SetStop(true);
+        }
     }
 
     void OnCollisionEnter(Collision collision)

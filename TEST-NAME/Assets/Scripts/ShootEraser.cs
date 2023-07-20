@@ -31,12 +31,7 @@ public class ShootEraser : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && !isFlying)
         {
-            eraserShootingParticlePrefab.GetComponent<VisualEffect>().Play();
-            SetEraserDirection();
-            SetEraserPosition(1f);
-            SetEraserVFXPosition(1f);
-            eraserMovement.LaunchEraser();
-            isFlying = true;
+            Fire();
         }
     }
     // Update is called once per frame
@@ -54,6 +49,20 @@ public class ShootEraser : MonoBehaviour
         }
     }
 
+    public bool IsFlying()
+    {
+        return isFlying;
+    }
+
+    public void Fire()
+    {
+        eraserShootingParticlePrefab.GetComponent<VisualEffect>().Play();
+        SetEraserDirection();
+        SetEraserPosition(1f);
+        SetEraserVFXPosition(1f);
+        eraserMovement.LaunchEraser();
+        isFlying = true;
+    }
     void OffsetVFXPosition(float offset)
     {
         Vector3 eraserParticlePosition = transform.position;
