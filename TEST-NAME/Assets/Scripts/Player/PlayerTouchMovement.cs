@@ -19,7 +19,9 @@ public class PlayerTouchMovement : MonoBehaviour
     
     void Start()
     {
+        //Required for EnhancedTouchSupport
         EnhancedTouchSupport.Enable();
+        // Adding event listeners for the touch events
         ETouch.Touch.onFingerDown += HandleFingerDown;
         ETouch.Touch.onFingerUp += HandleLoseFinger;
         ETouch.Touch.onFingerMove += HandleFingerMove;
@@ -46,8 +48,9 @@ public class PlayerTouchMovement : MonoBehaviour
             float maxMovement = 35; 
             ETouch.Touch currentTouch = MovedFinger.currentTouch;
 
-
+            // Limit the distance the knob can move from the center of the joystick.
             Vector2 touchPos;
+            // Converts the screen position of the touch into a position within the RectTransform of the joystick.
             RectTransformUtility.ScreenPointToLocalPointInRectangle(Joystick.GetComponent<RectTransform>(), currentTouch.screenPosition, null, out touchPos);
 
             float maxKnobDistance = Joystick.GetComponent<RectTransform>().sizeDelta.x * 0.3f;
@@ -65,6 +68,7 @@ public class PlayerTouchMovement : MonoBehaviour
             Joystick.Knob.anchoredPosition = Vector2.zero;
             MovementAmount = Vector2.zero;
         }
+        
         if (ShootFinger == LostFinger)
         {
             ShootFinger = null;
@@ -73,14 +77,14 @@ public class PlayerTouchMovement : MonoBehaviour
 
     private void HandleFingerDown(Finger TouchedFinger)
     {
+        ETouch.Touch currentTouch = TouchedFinger.currentTouch;
+        Vector2 touchPos;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(Joystick.GetComponent<RectTransform>(), currentTouch.screenPosition, null, out touchPos);
+
         if (MovementFinger == null && IsTouchWithinJoystickRadius(TouchedFinger))
         {
-            ETouch.Touch currentTouch = TouchedFinger.currentTouch;
             MovementFinger  = TouchedFinger;
             MovementAmount = Vector2.zero;
-
-            Vector2 touchPos;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(Joystick.GetComponent<RectTransform>(), currentTouch.screenPosition, null, out touchPos);
 
             // Limit the distance the knob can move from the center of the joystick.
             float maxKnobDistance = Joystick.GetComponent<RectTransform>().sizeDelta.x * 0.3f;
