@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI gameCompleteText;
     [SerializeField] Button restartButton;
+    [SerializeField] ObjectsSpawnManager objectsSpawnManager; 
     private int score;
     private int buttonsCollected = 0;
     private bool isGameActive;
@@ -70,5 +71,10 @@ public class GameManager : MonoBehaviour
     public int GetNumOfEnemiesOnScreen()
     {
         return numOfEnemiesOnScreen;
+    }
+
+    public void MakeAllObjectVisible(PlayerMovement playerMovement)
+    {
+        objectsSpawnManager.MakeAllObjectVisible(playerMovement);
     }
 }
