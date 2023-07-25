@@ -15,6 +15,10 @@ public class PlayerMovement : MonoBehaviour
     private int health = 5;
     PlayerHealthBar playerHealthBar;
     private int numOfRadars = 0;
+    private int numOfProjectiles = 0;
+    private int maxNumberOfProjectiles = 3;
+
+    [SerializeField] StatusBarRadarsProjectiles statusBar; 
     enum MoveDirection
     {
         None,
@@ -35,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
         playerAnimator = GetComponent<Animator>();  
         rb = GetComponent<Rigidbody>();
         playerHealthBar = GetComponent<PlayerHealthBar>();
+        statusBar = GetComponent<StatusBarRadarsProjectiles>();
     }
 
     void Update()
@@ -143,6 +148,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 Debug.Log("Num of radars: " + numOfRadars);
                 numOfRadars--;
+                UpdateNumOfRadars(numOfRadars);
                 Debug.Log("Revealing all stuff");
                 gameManager.MakeAllObjectVisible(this);
             }
@@ -153,7 +159,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-
+    public int GetNumberOfRadars()
+    {
+        return numOfRadars;
+    }
 
     void ResetLatestDirection()
     {
@@ -244,5 +253,22 @@ public class PlayerMovement : MonoBehaviour
     public void UpdateNumOfRadars(int numOfRadars_)
     {
         numOfRadars = numOfRadars_;
+        statusBar.UpdateNumOfRadars(numOfRadars);
+    }
+
+    public int GetNumOfEraser()
+    {
+        return numOfProjectiles;
+    }
+
+    public void UpdateNumOfEraser(int numOfProjectiles)
+    {
+        this.numOfProjectiles = numOfProjectiles;
+        statusBar.UpdateNumOfProjectiles(numOfProjectiles);
+    }
+
+    public int GetMaxNumOfEraser()
+    {
+        return maxNumberOfProjectiles;
     }
 }
