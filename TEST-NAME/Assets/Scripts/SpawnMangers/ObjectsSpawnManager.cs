@@ -9,6 +9,7 @@ public class ObjectsSpawnManager : MonoBehaviour
     [SerializeField] GameObject clothButtonsObject;
 
     [SerializeField] GameObject rubberBallPrefab;
+    [SerializeField] GameObject radarsObject;
 
     int leftLimit;
     int rightLimit;
@@ -22,6 +23,7 @@ public class ObjectsSpawnManager : MonoBehaviour
     public int numOfNeedleEnemiesToSpawn = 3;
     public int numOfBatteriesToSpawn = 3;
     public int numOfButtonsToSpawn = 3;
+    public int numOfRadarsToSpawn = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +37,7 @@ public class ObjectsSpawnManager : MonoBehaviour
         SpawnRubberBalls();
         SpawnGoodies(numOfBatteriesToSpawn, batteriesObject);
         SpawnGoodies(numOfButtonsToSpawn, clothButtonsObject);
+        SpawnGoodies(numOfRadarsToSpawn, radarsObject);
     }
 
     // Update is called once per frame
@@ -50,6 +53,28 @@ public class ObjectsSpawnManager : MonoBehaviour
             buttonObject.GetComponent<MeshRenderer>().enabled = false;
             buttonObject.transform.position = new Vector3(GetRandomX(), GetRandomY(), 0);
         }
+    }
+
+    public void MakeObjectVisible(int numToSpawn, GameObject goodiesObjectContainer, PlayerMovement playerMovement)
+    {
+        for (int i = 0; i < numToSpawn; i++)
+        {
+            GameObject buttonObject = goodiesObjectContainer.transform.GetChild(i).gameObject;
+            if (Vector3.Distance(buttonObject.transform.position, playerMovement.transform.position) < 10.0f)
+            {
+                buttonObject.SetActive(true);
+                buttonObject.transform.position = new Vector3(buttonObject.transform.position.x, buttonObject.transform.position.y, buttonObject.transform.position.z + 1.0f);
+                buttonObject.GetComponent<MeshRenderer>().enabled = true;
+            }
+        }
+
+    }
+
+    public void MakeAllObjectVisible(PlayerMovement playerMovement)
+    {
+        MakeObjectVisible(numOfBatteriesToSpawn, batteriesObject, playerMovement);
+        MakeObjectVisible(numOfButtonsToSpawn, clothButtonsObject, playerMovement);
+        MakeObjectVisible(numOfRadarsToSpawn, radarsObject, playerMovement);
     }
 
     public void SpawnRubberBalls()

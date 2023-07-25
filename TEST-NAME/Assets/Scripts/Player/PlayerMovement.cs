@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameManager gameManager;
     private Rigidbody rb;
     private int health = 5;
+    PlayerHealthBar playerHealthBar;
+    private int numOfRadars = 0;
     enum MoveDirection
     {
         None,
@@ -32,12 +34,14 @@ public class PlayerMovement : MonoBehaviour
     { 
         playerAnimator = GetComponent<Animator>();  
         rb = GetComponent<Rigidbody>();
+        playerHealthBar = GetComponent<PlayerHealthBar>();
     }
 
     void Update()
     {
         if(gameManager.IsGameActive())        
             GetKeyboardInput();
+            GetZKeyInput();
     }
 
     void FixedUpdate()
@@ -131,6 +135,26 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void GetZKeyInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            if (numOfRadars > 0)
+            {
+                Debug.Log("Num of radars: " + numOfRadars);
+                numOfRadars--;
+                Debug.Log("Revealing all stuff");
+                gameManager.MakeAllObjectVisible(this);
+            }
+            else
+            {
+                Debug.Log("No more radars");
+            }
+        }
+    }
+
+
+
     void ResetLatestDirection()
     {
         if (upKeyPressed)
@@ -179,6 +203,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             health--;
+            playerHealthBar.UpdateHealthBar(health);
             collision.gameObject.GetComponent<EnemyNeedleMovementAI>().SetStop(true);
             Debug.Log(health); 
             if (health <= 0)
@@ -209,5 +234,15 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         MoveAllDirections(-moveVector.x, moveVector.y);
+    }
+
+    public int GetNumOfRadars()
+    {
+        return numOfRadars;
+    }
+
+    public void UpdateNumOfRadars(int numOfRadars_)
+    {
+        numOfRadars = numOfRadars_;
     }
 }
