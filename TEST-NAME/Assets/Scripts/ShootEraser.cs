@@ -15,6 +15,8 @@ public class ShootEraser : MonoBehaviour
     private float rightAngle = 270f;
     bool isFlying = false;
     Direction eraserDirectionEnum;
+
+    private PlayerMovement playerMovement;
     enum Direction{
         Left,
         Right
@@ -25,6 +27,7 @@ public class ShootEraser : MonoBehaviour
         eraserDirection = new Vector3(-1, 0, 0);
         eraserRb = eraser.GetComponent<Rigidbody>();
         eraserMovement = eraser.GetComponent<EraserMovement>();
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     void Update()
@@ -56,6 +59,11 @@ public class ShootEraser : MonoBehaviour
 
     public void Fire()
     {
+        if (playerMovement.GetNumOfEraser() <= 0)
+        {
+            return;
+        }
+        playerMovement.UpdateNumOfEraser(playerMovement.GetNumOfEraser() - 1);
         eraserShootingParticlePrefab.GetComponent<VisualEffect>().Play();
         SetEraserDirection();
         SetEraserPosition(1f);

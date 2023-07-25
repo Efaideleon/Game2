@@ -15,6 +15,7 @@ TagManager:
   - Enemy
   - NeedleEnemySpawner
   - VFXSpawner
+  - SpawnPickUpErasers
   layers:
   - Default
   - TransparentFX
