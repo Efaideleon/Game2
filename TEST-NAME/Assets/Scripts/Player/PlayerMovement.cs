@@ -144,18 +144,23 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            if (numOfRadars > 0)
-            {
-                Debug.Log("Num of radars: " + numOfRadars);
-                numOfRadars--;
-                UpdateNumOfRadars(numOfRadars);
-                Debug.Log("Revealing all stuff");
-                gameManager.MakeAllObjectVisible(this);
-            }
-            else
-            {
-                Debug.Log("No more radars");
-            }
+            UseRadar();
+        }
+    }
+
+    public void UseRadar()
+    {
+        if (numOfRadars > 0)
+        {
+            Debug.Log("Num of radars: " + numOfRadars);
+            numOfRadars--;
+            UpdateNumOfRadars(numOfRadars);
+            Debug.Log("Revealing all stuff");
+            gameManager.MakeAllObjectVisible(this);
+        }
+        else
+        {
+            Debug.Log("No more radars");
         }
     }
 

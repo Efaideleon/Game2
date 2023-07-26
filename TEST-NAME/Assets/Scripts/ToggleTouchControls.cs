@@ -6,6 +6,7 @@ public class ToggleTouchControls : MonoBehaviour
 {
     [SerializeField] GameObject joyStick;
     [SerializeField] GameObject buttonA;
+    [SerializeField] GameObject buttonB;
     [SerializeField] Toggle toggle;
     // Start is called before the first frame update
     void Start()
@@ -24,11 +25,13 @@ public class ToggleTouchControls : MonoBehaviour
         {
             joyStick.SetActive(true);
             buttonA.SetActive(true);
+            buttonB.SetActive(true);
         }
         else
         {
             joyStick.SetActive(false);
             buttonA.SetActive(false);
+            buttonB.SetActive(false);
         }
     }
 }
