@@ -9,6 +9,7 @@ public class PlayerTouchMovement : MonoBehaviour
     [SerializeField] private Vector2 JoystickSize = new Vector2(300, 300);
     [SerializeField] private FloatingJoyStick Joystick;
     [SerializeField] private TouchButton FireButton;
+    [SerializeField] private TouchButton RadarButton;
     private Finger MovementFinger;
     private Finger ShootFinger;
     private Vector2 MovementAmount;
@@ -16,7 +17,7 @@ public class PlayerTouchMovement : MonoBehaviour
     [SerializeField] ShootEraser ShootEraser;
     float JoystickRadius = 105; //make jostick constant size to calculate its radius
     float FireButtonRadius = 140;
-    
+    float RadarButtonRadius = 120; 
     void Start()
     {
         //Required for EnhancedTouchSupport
@@ -98,6 +99,12 @@ public class PlayerTouchMovement : MonoBehaviour
             ShootFinger = TouchedFinger;
             ShootEraser.Fire();
         }
+
+        if (ShootFinger == null && IsTouchWithinRadarButton(TouchedFinger))
+        {
+            ShootFinger = TouchedFinger;
+            Player.UseRadar();
+        }
     }
     private bool IsTouchWithinJoystickRadius(Finger TouchedFinger)
     {
@@ -124,6 +131,22 @@ public class PlayerTouchMovement : MonoBehaviour
         }
         else{
             Debug.Log("Not in fire button range");
+            //Debug.Log("touched finger screen position" + TouchedFinger.screenPosition);
+            return false;
+        }
+    }
+
+
+    private bool IsTouchWithinRadarButton(Finger TouchedFinger)
+    {
+        if (Vector2.Distance(TouchedFinger.screenPosition, RadarButton.transform.position) < RadarButtonRadius)
+        {
+            Debug.Log("Within the Radar button");
+            //Debug.Log("touched finger screen position" + TouchedFinger.screenPosition);
+            return true;
+        }
+        else{
+            Debug.Log("Not in radar button range");
             //Debug.Log("touched finger screen position" + TouchedFinger.screenPosition);
             return false;
         }
